@@ -4,7 +4,7 @@ angular.module('breminaleApp')
 .factory('session', function ($rootScope,$cookieStore,socket) {
 
 	function _update(val){
-		$rootScope.session = val.session;
+		angular.copy(val.session,$rootScope.session);
 		if(val.session.sessionid!=$cookieStore.get('sessionid')){
 			if($cookieStore.get('sessionid')){
 				$cookieStore.remove('sessionid');
