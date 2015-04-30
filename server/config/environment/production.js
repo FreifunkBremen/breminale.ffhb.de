@@ -16,24 +16,5 @@ module.exports = {
 	database: {
 		db:    process.env.MongoDB ||
 						'breminale'
-	},
-	mail: {
-		subject: '[breminale] ',
-		from: 'breminale<breminale@fireorbit.de>',
-		transport:{debug:true,own:false},
-		dev:false,
-		smtp:{
-			host: 'localhost',
-			port: 587,
-			secure: false,
-			ignoreTLS: false,
-			tls:{
-				rejectUnauthorized: false
-			},
-			auth: {
-				user: 'breminale@fireorbit.de',
-				pass: 'breminalePassword'
-			}
-		}
 	}
 };

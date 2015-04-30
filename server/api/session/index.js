@@ -4,9 +4,6 @@ var crypto = require('crypto');
 var mongoose = require('mongoose');
 var Login = mongoose.model('Login');
 
-var mail = require('../../components/mail');
-var mailText = require('../../components/mail_text');
-
 
 
 var session = [];
@@ -56,7 +53,7 @@ module.exports = function(socket) {
 
 	socket.on('api::session::login',function(val,callback){
 		init(id);
-		Login.findOne({mail: val.mail}, function(err,login) {
+		Login.findOne({username: val.username}, function(err,login) {
 			if(!err && login){
 				if(login.active){
 					password_check(login.password,val.password,function(result){
@@ -74,7 +71,7 @@ module.exports = function(socket) {
 					callback(_request({s:false,form:{field:{'active':true}}}));
 				}
 			}else
-				callback(_request({s:false,form:{field:{'mail':true}}}));
+				callback(_request({s:false,form:{field:{'username':true}}}));
 		});
 	});
 
@@ -83,62 +80,6 @@ module.exports = function(socket) {
 		session[id].data.login = false;
 		callback(_request({s:true}));
 		delete session[id];
-	});
-
-	socket.on('api::session::signup',function(val,callback){
-		init(id);
-		if(!session[id].data.login){
-			Login.findOne({mail: val.mail},function(err,exists) {
-				if(err || exists.length != 0){
-					callback(_request({s:false,form:{field:{'mail':true}}}));
-				}else{
-					password_create(val.password,function(hashPassword){
-						var code = crypto.randomBytes(6).toString('hex');
-						var login = new Login();
-						login.name = val.name;
-						login.mail = val.mail;
-						login.password = hashPassword;
-						login.code = 's:'+code;
-						login.active = false;
-
-						login.save(function(err,loginSaved){
-							if(err){
-								callback(_request({s:false,form:{field:{'mail':true}}}));
-								return;
-							}
-
-							mail.sendMail(mailText({to:val.mail},'signup_active',{code:code,mail:val.mail}),function(error){
-								if(error){
-									loginSaved.delete();
-									callback(_request({s:false,form:{field:{'mail':true}}}));
-								}else{
-									callback(_request({s:true}));
-								}
-							});
-						});
-					});
-				}
-			});
-		}else{
-			callback(_request({s:false}));
-		}
-	});
-
-	socket.on('api::session::signup::active',function(val,callback){
-		init(id);
-		Login.findOne({mail: val.mail}, function(err,login) {
-			if(!err && login){
-				if(login.code == 's:'+val.code){
-					login.active = true;
-					login.code = '';
-					login.save();
-					callback(_request({s:true,data:{name:login.name}}));
-				}else{
-					callback(_request({s:false,form:{field:{'code':true}}}));
-				}
-			}else
-				callback(_request({s:false,form:{field:{'mail':true}}}));
-		});
 	});
 
 	function _request(data,callback){

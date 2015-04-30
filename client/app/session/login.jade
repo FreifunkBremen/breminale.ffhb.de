@@ -9,11 +9,11 @@ main.ui.page.grid.main
 					| {{'Login not possible'|translate}}!
 				.ui.message.success
 					| {{'Your are login'|translate}}!
-				.field(ng-class='{"error":form_field_error.mail}')
-					label {{'Mail'|translate}}
+				.field(ng-class='{"error":form_field_error.username}')
+					label {{'Username'|translate}}
 					.ui.left.icon.input
 						i.icon.mail
-						input(type='text',ng-model='obj.mail')
+						input(type='text',ng-model='obj.username')
 				.field(ng-class='{"error":form_field_error.password}')
 					label {{'Password'|translate}}
 					.ui.left.icon.input

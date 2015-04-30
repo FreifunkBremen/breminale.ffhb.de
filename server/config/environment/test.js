@@ -8,12 +8,5 @@ module.exports = {
 	database: {
 		db:    process.env.MongoDB||
 						'breminale'
-	},
-	mail: {
-		subject: '[breminale] ',
-		from: 'breminale<breminale@fireorbit.de>',
-		language:'de',
-		transport:{debug:true},
-		dev:true
 	}
 };

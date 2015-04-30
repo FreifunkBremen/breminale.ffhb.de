@@ -4,7 +4,7 @@ angular.module('breminaleApp')
 	.controller('LoginSessionCtrl', function ($scope,$rootScope,session, socket) {
 		$rootScope.NAVBAR = 'Login';
 
-		$scope.obj = {mail:'',password:''};
+		$scope.obj = {username:'',password:''};
 
 		$scope.login = function(){
 			$scope.loading = true;
