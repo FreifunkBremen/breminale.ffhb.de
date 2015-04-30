@@ -42,7 +42,6 @@ module.exports = function(socket) {
 			session[id]={data:{login:false,sessionid:id},id:id};
 		}else
 			id=val;
-		console.log(id);
 	}
 
 

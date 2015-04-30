@@ -6,10 +6,8 @@ angular.module('breminaleApp')
 		$scope._filter = '';
 		$scope.notifyToggle = notification.toggle;
 
-		socket.emit('notification::all',function(result) {
-			$scope.items = result.items;
-			session.update(result);
-		});
+		notification.getAll();
+		$scope.items = notification.notifications;
 
 		$scope.setFilter = function(tmp){
 			$scope._filter=tmp;
