@@ -1,12 +1,23 @@
+body
+	background #fff url(http://breminale.sternkultur.de/images/layout/body.jpg) top left no-repeat
+	background-size cover
+
 header.ui.grid
 	margin-top 10px
 	margin-bottom 20px
 
-main.ui.grid
+main.ui.grid .row
 	margin-top 20px
+	margin-left 3px
+	margin-right 3px
+	background #fff
+	border-radius 0.2857rem
+
+
 
 // Component styles are injected through grunt
 // injector
 @import 'main/main.styl';
+@import 'header/header.styl';
 @import 'navbar/navbar.styl';
 // endinjector

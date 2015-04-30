@@ -1,12 +1,10 @@
 var mongoose = require('mongoose');
 
 var LoginSchema = new mongoose.Schema({
-  username: String,
+  username: {type: String, unique: true},
   name: String,
   password: String,
-  active: {type: Boolean, default: false},
-	lastloginAt:Date,
-	code:String
+	type:{ type: String, enum: ['admin','ffhb','mgmt','moderator'] }
 });
 
 mongoose.model('Login', LoginSchema);

@@ -55,21 +55,15 @@ module.exports = function(socket) {
 		init(id);
 		Login.findOne({username: val.username}, function(err,login) {
 			if(!err && login){
-				if(login.active){
-					password_check(login.password,val.password,function(result){
-						if(result){
-							login.lastloginAt = new Date();
-							login.save();
-							session[id].data.login = true;
-							session[id].data.name = login.name;
-							callback(_request({s:true}));
-						}else{
-							callback(_request({s:false,form:{field:{'password':true}}}));
-						}
-					});
-				}else{
-					callback(_request({s:false,form:{field:{'active':true}}}));
-				}
+				password_check(login.password,val.password,function(result){
+					if(result){
+						session[id].data.login = true;
+						session[id].data.name = login.name;
+						callback(_request({s:true}));
+					}else{
+						callback(_request({s:false,form:{field:{'password':true}}}));
+					}
+				});
 			}else
 				callback(_request({s:false,form:{field:{'username':true}}}));
 		});
@@ -88,5 +82,9 @@ module.exports = function(socket) {
 			callback(data);
 		return data;
 	}
-	return {request:_request};
+	function _set(key,value){
+		session[id].data[key]=value;
+	};
+	return {request:_request,
+	set:_set};
 };

@@ -26,17 +26,7 @@
 		<!--[if lt IE 9]>
 			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
-		<header class="ui page grid">
-			<div class="row">
-				<div class="column">
-					<div class="ui large message">
-						<h1 class="ui huge header">breminale</h1>
-						<p>Here a placement for a Header Image</p>
-						<a href="/signup" class="ui blue button">{{'sign up'|translate}} &raquo;</a>
-					</div>
-				</div>
-			</div>
-		</header>
+		<div ng-include="'components/header/header.html'"></div>
 		<div ng-include="'components/navbar/navbar.html'"></div>
 		<!-- Add your site or application content here -->
 		<div ng-view=""></div>
@@ -61,9 +51,14 @@
 			<!-- injector:js -->
 			<script src="app/main/index.js"></script>
 			<script src="app/main/main.controller.js"></script>
+			<script src="app/notification/index.js"></script>
+			<script src="app/notification/manage.controller.js"></script>
+			<script src="app/notification/view.controller.js"></script>
 			<script src="app/session/index.js"></script>
 			<script src="app/session/login.controller.js"></script>
+			<script src="components/header/header.controller.js"></script>
 			<script src="components/navbar/navbar.controller.js"></script>
+			<script src="components/services/notification.js"></script>
 			<script src="components/services/session.js"></script>
 			<script src="translations.js"></script>
 			<!-- endinjector -->
