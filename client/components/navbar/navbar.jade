@@ -1,0 +1,35 @@
+.ui.grid.sticky(ng-controller='NavbarCtrl')#navbar
+	.computer.tablet.only.row
+		.ui.menu.secondary.pointing.grid.page
+			a.item(href='/',ng-class='{"active":NAVBAR == "Home"}')
+				i.icon.home
+				| {{'Home'|translate}}
+			a.item
+				i.icon.mail
+				| {{'Mail'|translate}}
+			a.item(ng-if='!session.login',href='/login',ng-class='{"active":NAVBAR == "Login"}')
+				i.icon.sign.in
+				| {{'Login'|translate}}
+			a.item(ng-if='session.login',ng-click='logout()',ng-class='{"active":NAVBAR == "Login"}')
+				i.icon.sign.out
+				| {{'Logout'|translate}}
+	.mobile.only.row
+		.ui.menu.grid.page
+			a.brand.item BitsTicket
+			.right.menu.open
+				a.item(ng-click='showMenu=!showMenu')
+					i.icon.ellipsis.vertical
+		.ui.grid.page(ng-if='showMenu')
+			.ui.menu.vertical
+				a.item(href='/',ng-class='{"active":NAVBAR == "Home"}')
+					i.icon.home
+					| {{'Home'|translate}}
+				a.item
+					i.icon.mail
+					| {{'Mail'|translate}}
+				a.item(ng-if='!session.login',href='/login',ng-class='{"active":NAVBAR == "Login"}')
+					i.icon.sign.in
+					| {{'Login'|translate}}
+				a.item(ng-if='session.login',ng-click='logout()',ng-class='{"active":NAVBAR == "Login"}')
+					i.icon.sign.out
+					| {{'Logout'|translate}}

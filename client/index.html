@@ -1,0 +1,74 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<base href="/">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<!-- build:css(client) app/vendor.css -->
+			<!-- bower:css -->
+			<link rel="stylesheet" href="bower_components/semantic-ui/dist/semantic.css" />
+			<!-- endbower -->
+		<!-- endbuild -->
+		<!-- build:css({.tmp,client}) app/app.css -->
+		<link rel="stylesheet" href="app/app.css">
+			<!-- injector:css -->
+			<!-- endinjector -->
+		<!-- endbuild -->
+	</head>
+	<body ng-app="breminaleApp">
+		<!--[if lt IE 9]>
+			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+		<header class="ui page grid">
+			<div class="row">
+				<div class="column">
+					<div class="ui large message">
+						<h1 class="ui huge header">breminale</h1>
+						<p>Here a placement for a Header Image</p>
+						<a href="/signup" class="ui blue button">{{'sign up'|translate}} &raquo;</a>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div ng-include="'components/navbar/navbar.html'"></div>
+		<!-- Add your site or application content here -->
+		<div ng-view=""></div>
+
+		<!-- build:js({client,node_modules}) app/vendor.js -->
+			<script src="bower_components/socket.io-client/socket.io.js"></script>
+			<!-- bower:js -->
+			<script src="bower_components/jquery/dist/jquery.js"></script>
+			<script src="bower_components/angular/angular.js"></script>
+			<script src="bower_components/angular-resource/angular-resource.js"></script>
+			<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+			<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+			<script src="bower_components/angular-route/angular-route.js"></script>
+			<script src="bower_components/lodash/dist/lodash.compat.js"></script>
+			<script src="bower_components/semantic-ui/dist/semantic.js"></script>
+			<script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
+			<script src="bower_components/angular-socket-io/socket.js"></script>
+			<!-- endbower -->
+		<!-- endbuild -->
+		<!-- build:js({.tmp,client}) app/app.js -->
+		<script src="app/app.js"></script>
+			<!-- injector:js -->
+			<script src="app/main/index.js"></script>
+			<script src="app/main/main.controller.js"></script>
+			<script src="app/session/index.js"></script>
+			<script src="app/session/login.controller.js"></script>
+			<script src="app/session/signup.active.controller.js"></script>
+			<script src="app/session/signup.controller.js"></script>
+			<script src="components/navbar/navbar.controller.js"></script>
+			<script src="components/services/session.js"></script>
+			<script src="translations.js"></script>
+			<!-- endinjector -->
+		<!-- endbuild -->
+	</body>
+</html>

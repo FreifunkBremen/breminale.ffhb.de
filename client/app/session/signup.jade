@@ -1,0 +1,33 @@
+main.ui.page.grid.main
+	.row
+		.column
+			h1.ui.header {{'Sign up'|translate}}:
+	.row
+		.column
+			form.ui.form.segment(ng-class='{"error":form_error,"success":form_success}',ng-submit='signup()',name='form')
+				.ui.message.error
+					| {{'sign up not possible'|translate}}!
+				.ui.message.success
+					| {{'sign up done, please check mail'|translate}}!
+				.field(ng-class='{"error":(form.name.$dirty && form.name.$error.minlength)}')
+					label {{'Name'|translate}}
+					.ui.input
+						input(type='text',ng-model='obj.name',name='name',ng-minlength='3',required)
+				.field(ng-class='{"error":(form_field_error.mail || (form.mail.$dirty && form.mail.$error.email))}')
+					label {{'Mail'|translate}}
+					.ui.left.icon.input
+						i.icon.mail
+						input(type='email',ng-model='obj.mail',name='mail')
+				.field(ng-class='{"error":form_field_error.password}')
+					label {{'Password'|translate}}
+					.ui.left.icon.input
+						i.icon.lock
+						input(type='password',ng-model='obj.password')
+				.field(ng-class='{"error":(form.repeat_password.$dirty && repeat_password.length > 0 && obj.password!=repeat_password)}')
+					label {{'Password repeat'|translate}}
+					.ui.left.icon.input
+						i.icon.lock
+						input(type='password',ng-model='repeat_password',name='repeat_password')
+				button.ui.labeled.icon.button(ng-class='{"loading":loading}')
+					i.icon.sign.in
+					| {{'sign up'|translate}}

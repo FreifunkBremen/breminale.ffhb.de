@@ -1,0 +1,11 @@
+main.ui.page.grid.main
+	.row
+		.column
+			h1.ui.header {{'Features'|translate}}:
+			.ui.bulleted.list
+				a.item(ng-repeat='thing in awesomeThings')
+					| {{thing.name}}
+	.row
+		.column
+			p(style='height:1000px;')
+				| {{'Test'|translate}}

@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: .tmp/app/session/signup_active.html:1
+msgid "Active"
+msgstr ""
+
+#: .tmp/app/main/main.html:1
+msgid "Features"
+msgstr ""
+
+#: .tmp/components/navbar/navbar.html:1
+msgid "Home"
+msgstr ""
+
+#: .tmp/app/session/login.html:1
+#: .tmp/components/navbar/navbar.html:1
+msgid "Login"
+msgstr ""
+
+#: .tmp/app/session/login.html:1
+msgid "Login not possible"
+msgstr ""
+
+#: .tmp/components/navbar/navbar.html:1
+msgid "Logout"
+msgstr ""
+
+#: .tmp/app/session/login.html:1
+#: .tmp/app/session/signup.html:1
+#: .tmp/app/session/signup_active.html:1
+#: .tmp/components/navbar/navbar.html:1
+msgid "Mail"
+msgstr ""
+
+#: .tmp/app/session/signup.html:1
+msgid "Name"
+msgstr ""
+
+#: .tmp/app/session/login.html:1
+#: .tmp/app/session/signup.html:1
+msgid "Password"
+msgstr ""
+
+#: .tmp/app/session/signup.html:1
+msgid "Password repeat"
+msgstr ""
+
+#: .tmp/app/session/signup.html:1
+msgid "Sign up"
+msgstr ""
+
+#: .tmp/app/main/main.html:1
+msgid "Test"
+msgstr ""
+
+#: .tmp/app/session/login.html:1
+msgid "Your are login"
+msgstr ""
+
+#: .tmp/app/session/signup_active.html:1
+msgid "active"
+msgstr ""
+
+#: .tmp/app/session/signup_active.html:1
+msgid "active code"
+msgstr ""
+
+#: .tmp/app/session/signup.html:1
+#: client/index.html:35
+msgid "sign up"
+msgstr ""
+
+#: .tmp/app/session/signup.html:1
+msgid "sign up done, please check mail"
+msgstr ""
+
+#: .tmp/app/session/signup.html:1
+msgid "sign up not possible"
+msgstr ""
+
+#: .tmp/app/session/signup_active.html:1
+msgid "successfull active, welcome {{name}}"
+msgstr ""
