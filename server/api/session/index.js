@@ -77,12 +77,14 @@ module.exports = function(socket) {
 	});
 
 	function _request(data,callback){
+		init(id);
 		data.session=session[id].data;
 		if(typeof callback === 'function')
 			callback(data);
 		return data;
 	}
 	function _set(key,value){
+		init(id);
 		session[id].data[key]=value;
 	};
 	return {request:_request,
