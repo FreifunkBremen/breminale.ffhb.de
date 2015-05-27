@@ -179,7 +179,10 @@ module.exports = function(grunt) {
             				tasks: ['jade','nggettext_extract','nggettext_compile']
             			},
             styles: {
-                files: ['public/app.styl'],
+                files: [
+                  'public/app.styl',
+                  'public/{app,components}/*',
+                  'public/{app,components}/**/*.styl'],
                 tasks: ['stylus:dev'],
                 options: {
                     livereload: true

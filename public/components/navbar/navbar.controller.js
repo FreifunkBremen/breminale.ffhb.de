@@ -2,5 +2,7 @@
 
 angular.module('breminaleApp')
 	.controller('NavbarCtrl', ['$scope',function ($scope) {
-		$scope.showMenu = false;
+		$scope.toggleMenu = function(){
+			$('#navbarSidebar').sidebar('toggle');
+		};
 	}]);

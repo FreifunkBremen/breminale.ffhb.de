@@ -1,31 +1,31 @@
+.ui.page.grid
+	.row(ng-include="'components/navbar/header.html'")
 .ui.grid#navbar(ng-controller='NavbarCtrl')
 	.computer.tablet.only.ui.page.grid
 		.row
 			.column
-				.ui.menu
-					a.item(href='/',ng-class='{"active":NAVBAR == "Home"}')
+				.ui.menu.inverted
+					a.item(ui-sref='index',ng-class='{"active":NAVBAR == "Home"}')
 						i.icon.home
 						| {{'Home'|translate}}
-					a.item(href='/feed',ng-class='{"active":NAVBAR == "Feed"}')
+					a.item(ui-sref='feed',ng-class='{"active":NAVBAR == "Feed"}')
 						i.icon.home
 						| {{'Feed'|translate}}
-					a.item(href='/about',ng-class='{"active":NAVBAR == "Notification"}')
+					a.item(ui-sref='about',ng-class='{"active":NAVBAR == "About"}')
 						i.icon.mail
 						| {{'About'|translate}}
-	.mobile.only.row
-		.ui.menu.grid.page
-			a.brand.item Breminale.ffhb.de
-			.right.menu.open
-				a.item(ng-click='showMenu=!showMenu')
-					i.icon.ellipsis.vertical
-		.ui.grid.page(ng-if='showMenu')
-			.ui.menu.vertical
-				a.item(href='/',ng-class='{"active":NAVBAR == "Home"}')
-					i.icon.home
-					| {{'Home'|translate}}
-				a.item(href='/feed',ng-class='{"active":NAVBAR == "Feed"}')
-					i.icon.home
-					| {{'Feed'|translate}}
-				a.item(href='/about',ng-class='{"active":NAVBAR == "Notification"}')
-					i.icon.mail
-					| {{'About'|translate}}
+	.mobile.only.ui.menu.inverted.top.fixed.grid.page
+		.menu.open
+			a.item(ng-click='toggleMenu()')
+				i.icon.content.vertical
+			a.brand.item breminale.ffhb.de
+#navbarSidebar.row.ui.sidebar.left.vertical.inverted.menu.labeled.icon
+	a.item(ui-sref='index',ng-class='{"active":NAVBAR == "Home"}')
+		i.icon.home
+		| {{'Home'|translate}}
+	a.item(ui-sref='feed',ng-class='{"active":NAVBAR == "Feed"}')
+		i.icon.home
+		| {{'Feed'|translate}}
+	a.item(ui-sref='about',ng-class='{"active":NAVBAR == "About"}')
+		i.icon.mail
+		| {{'About'|translate}}

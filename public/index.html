@@ -21,9 +21,10 @@
 		<!-- endbuild -->
 	</head>
 	<body ng-app="breminaleApp">
-		<div ng-include="'components/navbar/navbar.html'"></div>
-		<div ui-view=""></div>
-
+		<div class="dimmed pusher">
+			<div ng-include="'components/navbar/navbar.html'"></div>
+			<div ui-view=""></div>
+		</div>
 		<!-- build:js({public,node_modules}) vendor.js -->
 			<!-- bower:js -->
 				<script src="bower_components/lodash/dist/lodash.compat.js"></script>

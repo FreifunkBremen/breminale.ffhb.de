@@ -6,11 +6,15 @@ angular.module('breminaleApp')
       .state('index', {
         url:'/',
         templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
+        controller: function($rootScope){
+          $rootScope.NAVBAR = 'Home';
+        }
       })
       .state('about', {
         url:'/about',
         templateUrl: 'app/main/about.html',
-        controller: 'MainCtrl'
+        controller: function($rootScope){
+          $rootScope.NAVBAR = 'About';
+        }
       });
   }]);
