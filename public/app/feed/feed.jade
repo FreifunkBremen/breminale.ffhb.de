@@ -1,0 +1,27 @@
+main.ui.page.grid.main
+	.row
+		.column
+			.ui.basis.buttons.mini
+				.ui.button(ng-click='setFilter("")',ng-class='{"active":(_filter=="")}') All
+				.ui.button(ng-click='setFilter("route66")',ng-class='{"active":(_filter=="route66")}') route66
+				.ui.button(ng-click='setFilter("StateParkSunday")',ng-class='{"active":(_filter=="StateParkSunday")}') StateParkSunday
+	.row
+		.column
+			h1.ui.header {{'Feeds'|translate}}:
+			.ui.feed
+				.event(ng-repeat='item in list|filter:{hashtags:_filter}')
+					.label
+						i.icon.newspaper
+					.content
+						.date {{item.created_time|date:'HH:mm'}}
+						.summary {{item.message}}
+						.meta
+							.ui.label(ng-repeat='tag in item.hashtags') {{tag}}
+	.row
+		.column
+			p
+				p Hier können Sie Ihr Miconware-Account für die folgenden Platformen verwalten.
+				br
+				| Last Refresh: {{lastUpdate*1000|date:'dd.MM.yyyy HH:mm:ss'}}
+				br
+				| Count of Refresh {{Iterator}}

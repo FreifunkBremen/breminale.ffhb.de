@@ -1,5 +1,6 @@
 node_modules
 .tmp
+logs
 public/*.css
 public/app/**/*.html
 public/components/**/*.html
