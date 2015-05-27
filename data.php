@@ -6,7 +6,7 @@ $DEV = true;
 $CACHE_PATH = '/tmp/breminale_ffhb_de.cache';
 $CACHE = json_decode(file_get_contents($CACHE_PATH), true);
 $CACHE_UPDATE_TIME = 10;
-if(($CACHE['lastChange']+$CACHE_UPDATE_TIME) <= (time())){
+if(($CACHE['lastUpdate']+$CACHE_UPDATE_TIME) <= (time())){
 	$CACHE['change'] = true;
 	/**
 	 * UPDATE CACHE:
@@ -22,7 +22,7 @@ $OUTPUT = array();
 //DEV OUTPUT
 if($DEV){
 	$OUTPUT[time] = time();
-	$OUTPUT[lastChange] = $CACHE['lastChange'];
+	$OUTPUT[lastUpdate] = $CACHE['lastUpdate'];
 }
 /**
  * Convert:
@@ -34,7 +34,7 @@ $OUTPUT[Iterator] = $CACHE['Iterator'];
  */
 if($CACHE['change']){
 	$CACHE['change'] = false;
-	$CACHE['lastChange'] = time();
+	$CACHE['lastUpdate'] = time();
 	file_put_contents($CACHE_PATH, json_encode($CACHE));
 }
 /**
