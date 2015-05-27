@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('breminaleApp')
-	.controller('NavbarCtrl', function ($scope) {
+	.controller('NavbarCtrl', ['$scope',function ($scope) {
 		$scope.showMenu = false;
-	});
+	}]);

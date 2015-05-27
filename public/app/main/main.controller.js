@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('breminaleApp')
-	.controller('MainCtrl',function ($scope,$rootScope) {
+	.controller('MainCtrl',['$scope','$rootScope',function ($scope,$rootScope) {
 		$rootScope.NAVBAR = 'Home';
-	});
+	}]);

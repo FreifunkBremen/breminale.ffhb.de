@@ -33,6 +33,20 @@ module.exports = function(grunt) {
           js: ['dist/*.js'],
           options: {
             dest: 'dist',
+            flow: {
+              html: {
+                steps: {
+                  js: ['concat', 'uglifyjs'],
+                  css: ['cssmin']
+                },
+                post: {}
+              }
+            }
+          }
+        },
+        uglify: {
+          options: {
+            mangle: false
           }
         },
         usemin: {
@@ -40,6 +54,11 @@ module.exports = function(grunt) {
     			css: ['dist/*.css'],
     			js: ['dist/*.js'],
         },
+        cdnify: {
+    			dist: {
+    				html: ['dist/*.html']
+    			}
+    		},
         copy: {
     			dist: {
     				files: [{
@@ -219,6 +238,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-google-cdn');
 
     grunt.loadNpmTasks('grunt-php');
     grunt.loadNpmTasks('grunt-contrib-jade');
@@ -245,14 +265,16 @@ module.exports = function(grunt) {
         'jade',
         'stylus:dev',
         //'wiredep',
+        'useminPrepare',
         'ngtemplates',
         'nggettext_compile',
-        'useminPrepare',
         'concat:generated',
         'copy:dist',
+        //'cdnify',
         'cssmin:generated',
         'uglify:generated',
         'usemin',
+        'gh-pages',
         'clean:tmp'
       ]);
 
