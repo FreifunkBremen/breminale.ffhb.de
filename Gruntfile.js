@@ -77,7 +77,7 @@ module.exports = function(grunt) {
     				}, {
     					expand: true,
     					cwd: 'public/bower_components/semantic-ui/dist/themes',
-    					dest: 'dist/app/themes',
+    					dest: 'dist/themes',
     					src: [
     						'**/assets/fonts/icons.*'
     					]
