@@ -1,11 +1,8 @@
 node_modules
-public
 .tmp
-.idea
-client/bower_components
+public/app/**/*.html
+public/components/**/*.html
+public/bower_components
 client/translations.js
 dist
-bower_components
-/server/config/local.env.js
-
 *~
