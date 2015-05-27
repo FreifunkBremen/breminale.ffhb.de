@@ -8,4 +8,8 @@ main.ui.page.grid.main
 	.row
 		.column
 			p(style='height:1000px;')
-				| Hier können Sie Ihr Miconware-Account für die folgenden Platformen verwalten.
+				p Hier können Sie Ihr Miconware-Account für die folgenden Platformen verwalten.
+				br
+				| Last Refresh: {{result.lastUpdate*1000|date:'dd.MM.yyyy HH:mm:ss'}}
+				br
+				| Count of Refresh {{result.Iterator}}

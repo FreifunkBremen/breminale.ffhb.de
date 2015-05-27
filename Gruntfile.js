@@ -8,7 +8,11 @@ module.exports = function(grunt) {
                     hostname: '127.0.0.1',
                     port: 5000,
                     base:'./public/',
-                    keepalive: true
+                    keepalive: true,
+                    directives: {
+                        'error_log': require('path').resolve('logs/error.log'),
+                        'access_log': require('path').resolve('logs/access.log')
+                    }
                 }
             }
         },
