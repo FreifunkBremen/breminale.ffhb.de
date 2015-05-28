@@ -1,14 +1,16 @@
 main.ui.page.grid.main
 	.row
-		.column
+		.column.ui.segment
 			h1.ui.header {{'Feeds'|translate}}
 			| Filter: &nbsp;
 			.ui.basis.buttons.mini
 				.ui.button(ng-click='setFilter("")',ng-class='{"primary":(_filter=="")}') All
 				.ui.button(ng-click='setFilter("twocootstravel")',ng-class='{"primary":(_filter=="twocootstravel")}') twocootstravel
 				.ui.button(ng-click='setFilter("StateParkSunday")',ng-class='{"primary":(_filter=="StateParkSunday")}') StateParkSunday
+			.ui.button.mini.right(ng-click='refresh()')
+				i.icon.refresh
 	.row
-		.column
+		.column.ui.segment
 			.ui.feed
 				.event(ng-repeat='item in list|filter:{hashtags:_filter}')
 					.label
@@ -18,6 +20,8 @@ main.ui.page.grid.main
 						.summary {{item.message}}
 						.meta
 							.ui.button.mini(ng-repeat='tag in item.hashtags',ng-click='setFilter(tag)') {{tag}}
+			.ui.dimmer(ng-class='{"active":loading}')
+
 	.row
 		.column
 			p

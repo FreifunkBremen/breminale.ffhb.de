@@ -5,16 +5,10 @@ angular.module('breminaleApp')
     $stateProvider
       .state('index', {
         url:'/',
-        templateUrl: 'app/main/main.html',
-        controller: function($rootScope){
-          $rootScope.NAVBAR = 'Home';
-        }
+        templateUrl: 'app/main/main.html'
       })
       .state('about', {
         url:'/about',
-        templateUrl: 'app/main/about.html',
-        controller: function($rootScope){
-          $rootScope.NAVBAR = 'About';
-        }
+        templateUrl: 'app/main/about.html'
       });
   }]);
