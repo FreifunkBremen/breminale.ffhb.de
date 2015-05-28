@@ -33,16 +33,19 @@ if(($CACHE['lastUpdate']+$CACHE_UPDATE_TIME) <= (time())){
 	curl_close($curl);
 	$data = $request['data'];
 	foreach ($data as $item) {
-		preg_match_all('/#(\w*[a-zA-Z_]+\w*)/',$item['message'], $matches, PREG_OFFSET_CAPTURE);
-		if(count($matches[1]) > 0 ){
-			$hashtags = $matches[1];
-			$tags = array();
-			foreach ($hashtags as $tag) {
-				$tags[] = $tag[0];
+		if(isset($item['message'])){
+			preg_match_all('/#(\w*[a-zA-Z_]+\w*)/',$item['message'], 
+$matches, PREG_OFFSET_CAPTURE);
+			if(count($matches[1]) > 0 ){
+				$hashtags = $matches[1];
+				$tags = array();
+				foreach ($hashtags as $tag) {
+					$tags[] = $tag[0];
+				}
+				$item['hashtags'] = $tags;
 			}
-			$item['hashtags'] = $tags;
+			$CACHE['feed'][]=$item;
 		}
-		$CACHE['feed'][]=$item;
 	}
 
 }
