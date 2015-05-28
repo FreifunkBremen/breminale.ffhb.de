@@ -5,13 +5,13 @@
 		.row
 			.column
 				.ui.menu.inverted
-					a.item(ui-sref='index',ng-class='{\'active\':$state.includes(\'index\')}')
+					a.item(ui-sref='index',ui-sref-active='active')
 						i.icon.home
 						| {{'Home'|translate}}
-					a.item(ui-sref='feed',ng-class='{\'active\':$state.includes(\'feed\')}')
+					a.item(ui-sref='feed',ui-sref-active='active')
 						i.icon.home
 						| {{'Feed'|translate}}
-					a.item(ui-sref='about',ng-class='{\'active\':$state.includes(\'about\')}')
+					a.item(ui-sref='about',ui-sref-active='active')
 						i.icon.mail
 						| {{'About'|translate}}
 	.mobile.only.ui.menu.inverted.top.fixed.grid.page
@@ -20,12 +20,12 @@
 				i.icon.content.vertical
 			a.brand.item breminale.ffhb.de
 #navbarSidebar.row.ui.sidebar.left.vertical.inverted.menu.labeled.icon
-	a.item(ui-sref='index',ng-class='{\'active\':$state.includes(\'index\')}')
+	a.item(ui-sref='index',ui-sref-active='active')
 		i.icon.home
 		| {{'Home'|translate}}
-	a.item(ui-sref='feed',ng-class='{\'active\':$state.includes(\'feed\')}')
+	a.item(ui-sref='feed',ui-sref-active='active')
 		i.icon.home
 		| {{'Feed'|translate}}
-	a.item(ui-sref='about',ng-class='{\'active\':$state.includes(\'about\')}')
+	a.item(ui-sref='about',ui-sref-active='active')
 		i.icon.mail
 		| {{'About'|translate}}
