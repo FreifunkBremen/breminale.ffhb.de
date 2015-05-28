@@ -1,5 +1,10 @@
 # README
 
+## Preview
+
+http://10.196.0.91/ - FFHB
+http://breminale.ffhb.fireorbit.de/ - Internet
+
 
 ## Installation
 
@@ -10,9 +15,9 @@
 ```
 
 
-### copy
-
-dist to server
+copy dist to server
+or
+git clone/pull the gh-pages branch
 
 
 ## Development
