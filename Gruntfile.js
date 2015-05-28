@@ -74,8 +74,8 @@ module.exports = function(grunt) {
     						'*.{ico,png,txt,php}',
     						'.htaccess',
     						//'bower_components/**/*',
-    						'assets/images/{,*/}*.{webp}',
-    						'assets/fonts/**/*',
+    						'assets/*.png',
+                '!assets/toEdit*.png',
     						'index.html'
     					]
     				}, {
