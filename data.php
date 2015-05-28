@@ -34,8 +34,7 @@ if(($CACHE['lastUpdate']+$CACHE_UPDATE_TIME) <= (time())){
 	$data = $request['data'];
 	foreach ($data as $item) {
 		if(isset($item['message'])){
-			preg_match_all('/#(\w*[a-zA-Z_]+\w*)/',$item['message'], 
-$matches, PREG_OFFSET_CAPTURE);
+			preg_match_all('/#(\w*[a-zA-Z_]+\w*)/',$item['message'], $matches, PREG_OFFSET_CAPTURE);
 			if(count($matches[1]) > 0 ){
 				$hashtags = $matches[1];
 				$tags = array();
@@ -47,7 +46,6 @@ $matches, PREG_OFFSET_CAPTURE);
 			$CACHE['feed'][]=$item;
 		}
 	}
-
 }
 
 
