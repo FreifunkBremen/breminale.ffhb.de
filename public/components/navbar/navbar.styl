@@ -3,9 +3,48 @@
 
 
 header#header
+	position relative
+	width 100%
 	margin-top 45px
 	margin-bottom 7px
 
 header#header img.segment
+	position relative
+	top 0
 	width 100%
 	padding 0
+	z-index 5
+
+header#header img.ffhb
+	position absolute
+	z-index 10
+	top 14px
+	margin-top 1%
+	left 0px
+	margin-left 2%
+	width 22%
+
+header#header img.breminale
+	position absolute
+	z-index 10
+	top 14px
+	margin-top 6%
+	right 0px
+	margin-right 2%
+	width 30%
+
+header#header img.goes
+	position absolute
+	z-index 10
+	top 14px
+	margin-top 10%
+	right 47%
+	width 15%
+
+@media only screen and (max-width: 767px)
+	header#header img.breminale
+		margin-top 2%
+		width 50%
+
+	header#header img.goes
+		display none !important
