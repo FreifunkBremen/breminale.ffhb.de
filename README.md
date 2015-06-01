@@ -2,8 +2,8 @@
 
 ## Preview
 
-http://10.196.0.91/ - FFHB
-http://breminale.ffhb.fireorbit.de/ - Internet
+http://10.196.0.91/ - IPv4
+http://[2001:bf7:540::5b]/ - IPv6
 
 
 ## Installation
