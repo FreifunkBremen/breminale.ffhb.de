@@ -2,16 +2,13 @@
   "name": "breminale",
   "description":" Freifunk Goes Breminale - Webseite (in Entwicklung) http://breminale.ffhb.de",
   "readme": "README.md",
-  "version": "0.0.1",
-  "license" : "Copyleft",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/genofire/breminale.ffhb.de.git"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-angular-gettext": "^2.1.0",
-    "grunt-angular-templates": "^0.5.7",
     "grunt-concurrent": "^1.0.0",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-concat": "^0.5.1",

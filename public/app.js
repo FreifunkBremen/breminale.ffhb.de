@@ -1,18 +1,20 @@
 'use strict';
 
-angular.module('breminaleApp', [
-	'ngCookies',
-	'ngResource',
-	'ngSanitize',
-	'ui.router',
-	'gettext'
-])
-	.config(['$urlRouterProvider','$locationProvider',function ($urlRouterProvider, $locationProvider) {
-		$urlRouterProvider.otherwise('/');
+var a=function(){
+	var _feed_filter='';
+	//TODO Filter
+	var _feed='';
+	var _feed_loading=true;
 
-		$locationProvider.html5Mode(true).hashPrefix('!');
-	}])
-	.run(function(gettextCatalog){
-		gettextCatalog.currentLanguage = 'de';
-		gettextCatalog.debug = true;
-	})
+
+
+
+	function refresh(){
+		_feed_loading=true;
+		$.get( "data.php",function(data){
+			_feed=data;
+			_feed_loading=false;
+		});
+	}
+	refresh();
+}();

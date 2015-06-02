@@ -1,15 +1,9 @@
 {
-	"name": "breminale",
-	"version": "0.0.1",
-	"devDependencies": {
-		"angular": ">=1.2.*",
-		"jquery": "~1.11.0",
-		"angular-resource": ">=1.2.*",
-		"angular-cookies": ">=1.2.*",
-		"angular-sanitize": ">=1.2.*",
-		"angular-ui-router": "~0.2.14",
-		"lodash": "~2.4.1",
-		"semantic-ui": "~1.11.4",
-		"angular-gettext": "~2.0.3"
-	}
+  "name": "breminale",
+  "version": "0.1.1",
+  "devDependencies": {
+    "jquery": "~1.11.0",
+    "lodash": "~2.4.1",
+    "font-awesome": "~4.3.0"
+  }
 }

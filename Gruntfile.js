@@ -104,60 +104,15 @@ module.exports = function(grunt) {
     					expand: true,
     					cwd: 'public',
     					src: [
-    						'{app,components}/**/*.jade'
+    						'*.jade'
     					],
     					dest: 'public',
     					ext: '.html'
     				}]
     			}
     		},
-        ngAnnotate: {
-    			dist: {
-    				files: [{
-    					expand: true,
-    					cwd: '.tmp/concat',
-    					src: '*/**.js',
-    					dest: '.tmp/concat'
-    				}]
-    			}
-    		},
 
-        ngtemplates: {
-        			options: {
-        				// This should be the name of your apps angular module
-        				module: 'breminaleApp',
-        				htmlmin: {
-        					collapseBooleanAttributes: true,
-        					collapseWhitespace: true,
-        					removeAttributeQuotes: true,
-        					removeEmptyAttributes: true,
-        					removeRedundantAttributes: true,
-        					removeScriptTypeAttributes: true,
-        					removeStyleLinkTypeAttributes: true
-        				},
-        				usemin: 'app.js'
-        			},
-        			main: {
-        				cwd: 'public',
-        				src: ['{app,components}/**/*.html'],
-        				dest: '.tmp/templates.js'
-        			},
-        			tmp: {
-        				cwd: '.tmp',
-        				src: ['{app,components}/**/*.html'],
-        				dest: '.tmp/tmp-templates.js'
-        			}
-        },
-        nggettext_extract: {
-    			pot:{
-    				files:{'public/po/template.pot':['.tmp/**/*.html','public/index.html']}
-    			}
-    		},
-    		nggettext_compile: {
-    			all:{
-    				files:{'public/translations.js':['public/po/*.po']}
-    			}
-    		},
+
         'gh-pages': {
           options: {
             base: 'dist',
@@ -173,16 +128,13 @@ module.exports = function(grunt) {
         },
         watch: {
             jade: {
-            				files: [
-            					'public/{app,components}/*',
-            					'public/{app,components}/**/*.jade'],
-            				tasks: ['jade','nggettext_extract','nggettext_compile']
+            				files: ['public/*.jade'],
+            				tasks: ['jade']
             			},
             styles: {
                 files: [
                   'public/app.styl',
-                  'public/{app,components}/*',
-                  'public/{app,components}/**/*.styl'],
+                  'public/**/*.styl'],
                 tasks: ['stylus:dev'],
                 options: {
                     livereload: true
@@ -193,14 +145,10 @@ module.exports = function(grunt) {
       			},
             livereload: {
       				files: [
-                '{.tmp,public}/index.html',
+                '{.tmp,public}/*.html',
                 '{.tmp,public}/*.php',
-      					'{.tmp,public}/{app,components}/**/*.css',
-      					'{.tmp,public}/{app,components}/**/*.html',
-      					'{.tmp,public}/{app,components}/**/*.js',
-      					'!{.tmp,public}{app,components}/**/*.spec.js',
-      					'!{.tmp,public}/{app,components}/**/*.mock.js',
-      					'{.tmp,public}/translations.js',
+      					'{.tmp,public}/*.css',
+      					'{.tmp,public}/*.js',
       					'public/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
       				],
       				options: {
@@ -214,6 +162,7 @@ module.exports = function(grunt) {
     					dot: true,
     					src: [
     						'.tmp',
+                'public/*.html',
                 'public/{app,components}/**/*.html',
                 'public/app.css',
     						'dist/*',
@@ -226,6 +175,7 @@ module.exports = function(grunt) {
     					dot: true,
     					src: [
     						'.tmp',
+                'public/*.html',
                 'public/{app,components}/**/*.html',
                 'public/app.css',
     					]
@@ -253,16 +203,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-stylus');
     grunt.loadNpmTasks('grunt-usemin');
 
-    grunt.loadNpmTasks('grunt-angular-templates');
-    grunt.loadNpmTasks('grunt-angular-gettext');
-
     grunt.registerTask('default', [
         'clean:tmp',
         'jade',
         'stylus:dev',
         //'wiredep',
-        'nggettext_extract',
-        'nggettext_compile',
         'concurrent',
         'clean:tmp'
       ]);
@@ -274,8 +219,6 @@ module.exports = function(grunt) {
         'stylus:dev',
         //'wiredep',
         'useminPrepare',
-        'ngtemplates',
-        'nggettext_compile',
         'concat:generated',
         'copy:dist',
         //'cdnify',
@@ -285,7 +228,4 @@ module.exports = function(grunt) {
         'gh-pages',
         'clean:tmp'
       ]);
-
-    grunt.registerTask('extract', ['nggettext_extract']);
-    grunt.registerTask('compile', ['nggettext_compile']);
 };
