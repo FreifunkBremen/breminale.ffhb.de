@@ -8,9 +8,7 @@ html
 		meta(name='viewport',content='width=device-width, initial-scale=1, user-scalable=no')
 		// Place favicon.ico and apple-touch-icon.png in the root directory
 		// build:css(public) vendor.css
-		// bower:css
-				link(rel='stylesheet' href='bower_components/font-awesome/css/font-awesome.css')
-		// endbower
+		link(rel='stylesheet' href='bower_components/font-awesome/css/font-awesome.css')
 		// endbuild
 		// build:css({.tmp,public}) app.css
 		link(rel='stylesheet' href='app.css')
@@ -35,35 +33,18 @@ html
 					| Alle Infos und Fragen bekommt ihr beantwortet beim Freifunk-Stand am Fahnenmast und auf bremen.freifunk.net
 				.box
 					h1 Feed
-					| Filter: &nbsp;
-					.buttons
-						.button(ng-click='setFilter("")',ng-class='{"primary":(_filter=="")}') All
-						.button(ng-click='setFilter("twocootstravel")',ng-class='{"primary":(_filter=="twocootstravel")}') twocootstravel
-						.button(ng-click='setFilter("StateParkSunday")',ng-class='{"primary":(_filter=="StateParkSunday")}') StateParkSunday
-					.ui.button(ng-click='refresh()')
-						i.icon.refresh
-					.ui.feed.dimmer(ng-class='{"active":loading}')
-						.event(ng-repeat='item in list|filter:{hashtags:_filter}')
-							.label
-								i.icon.newspaper
-							.content
-								.date {{item.created_time|date:'EEE HH:mm'}}
-								.summary {{item.message}}
-								.meta
-									.ui.button.mini(ng-repeat='tag in item.hashtags',ng-click='setFilter(tag)') {{tag}}
-				.box
-					p
-						| last refresh: {{lastUpdate*1000|date:'dd.MM.yyyy HH:mm:ss'}}
-						br
-						| count of refresh: {{Iterator}}
-		#footer
-		// build:js({public,node_modules}) vendor.js
-		// bower:js
-		script(src='bower_components/lodash/dist/lodash.compat.js')
-		script(src='bower_components/jquery/dist/jquery.js')
-		// endbower
+					.bar
+						| Filter: &nbsp;
+						#filter
+							.button(name='') All
+							.button(name='twocootstravel') twocootstravel
+							.button(name='StateParkSunday') StateParkSunday
+						.button#refresh
+							i.fa.fa-refresh
+					.dimmer#feed
+				#state
+		footer
 		script(src='//localhost:35729/livereload.js')
-		// endbuild
 		// build:js({.tmp,public}) app.js
 		script(src='app.js')
 		// endbuild

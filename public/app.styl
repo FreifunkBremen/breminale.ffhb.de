@@ -1,19 +1,27 @@
 body
-	background #f7f7f7
 	min-width 320px
+	background #f7f7f7	
 	margin 0px
+
+body,*
+	font-family Lato,'Helvetica Neue',Arial,Helvetica,sans-serif
+	font-size 1em
+	line-heigh 1.33
+	box-sizing inherit
+	
+
 .box
+	margin-top 30px
 	box-shadow 0 0 0 1px rgba(39,41,43,.15),0 1px 2px 0 rgba(0,0,0,.05)
 	border-radius .2857rem
 	background #fff
+
+main .box
+	padding 15px
+
 main
 	margin-top 20px
-	margin-left 3px
-	margin-right 3px
-//	background #fff
-//	border 1px solid #DDDDDD
-//	border-radius 0.2857rem
-//	box-shadow 0px 0px 2px 0px rgba(0, 0, 0, 0.05)
+	margin-bottom 40px
 
 .wrapper
 	width auto
@@ -21,6 +29,7 @@ main
 	margin-right 0px
 	padding-left 0
 	padding-right 0
+
 @media only screen and (min-width: 768px)
 	.wrapper
 		padding-left 4em
@@ -38,7 +47,70 @@ main
 		padding-left 25% !important
 		padding-right 25% !important
 
-// Component styles are injected through grunt
-// injector
-@import 'navbar.styl';
-// endinjector
+.bar
+	border-bottom 1px solid rgba(39,41,43,.15)
+	padding-bottom 10px
+	margin-bottom 20px
+
+	> *
+		display inline-block
+	#refresh
+		float right
+#feed
+	.event
+		padding .5rem 0
+		display table
+		width  100%
+		> *
+			display	table-cell
+			vertical-align top
+			text-align left
+
+		.label
+			padding-top .7rem
+			width 2.5em
+			height 2.5em
+			color rgba(0,0,0,.6)
+
+			.fa
+				font-size 1.5em
+		
+		.content
+			padding .5em 0 .5em 1.25em
+
+			.date
+				padding 0
+				font-weight 400
+				font-size 1em
+				font-style normal
+				color rgba(0,0,0,.4)
+			.summary
+				color rgba(0,0,0,.8)
+				font-weight 700
+				font-height 1
+				
+			.meta
+				font-size .71428571rem
+				margin .5em 0 0
+.dimmer.active
+	z-index 800
+	background-color rgba(0,0,0,0.85)
+	border-radius	.2873rem
+
+	*
+		z-index 800
+		background-color rgba(0,0,0,0.1)
+
+.button
+	background-color #e0e0e0
+	color rgba(0,0,0,.6)
+	margin 0 .25em 0 0
+	padding .78571em 1.5em
+	border-radius .2857rem
+	box-shadow 0 0 0 1px transparent inset,0 0 0 0 rgba(39,41,43,.15)inset
+	display inline-block
+	line-height 1
+	font-weight 700
+
+@import 'navbar.styl'
+

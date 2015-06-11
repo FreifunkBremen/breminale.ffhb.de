@@ -33,8 +33,8 @@ module.exports = function(grunt) {
         },
         useminPrepare: {
           html: ['public/index.html'],
-          css: ['dist/*.css'],
-          js: ['dist/*.js'],
+          css: ['public/*.css'],
+          js: ['public/*.js'],
           options: {
             dest: 'dist',
             flow: {
@@ -54,9 +54,9 @@ module.exports = function(grunt) {
           }
         },
         usemin: {
-    			html: ['dist/*.html'],
-    			css: ['dist/*.css'],
-    			js: ['dist/*.js'],
+    			html: ['public/*.html'],
+    			css: ['public/*.css'],
+    			js: ['public/*.js'],
         },
         cdnify: {
     			dist: {
@@ -225,7 +225,7 @@ module.exports = function(grunt) {
         'cssmin:generated',
         'uglify:generated',
         'usemin',
-        'gh-pages',
+        //'gh-pages',
         'clean:tmp'
       ]);
 };
