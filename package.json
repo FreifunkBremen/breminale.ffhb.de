@@ -1,6 +1,6 @@
 {
   "name": "breminale",
-  "description":" Freifunk Goes Breminale - Webseite (in Entwicklung) http://breminale.ffhb.de",
+  "description": " Freifunk Goes Breminale - Webseite (in Entwicklung) http://breminale.ffhb.de",
   "readme": "README.md",
   "version": "0.1.1",
   "repository": {
@@ -18,11 +18,11 @@
     "grunt-contrib-stylus": "^0.21.0",
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-filerev": "^2.3.1",
     "grunt-gh-pages": "^0.10.0",
-    "grunt-google-cdn": "^0.4.3",
+    "grunt-inline": "^0.3.4",
     "grunt-php": "^1.5.0",
     "grunt-usemin": "^3.0.0",
-    "grunt-wiredep": "^2.0.0",
     "jade": "^1.10.0"
   }
 }

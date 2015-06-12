@@ -7,10 +7,8 @@ html
 		meta(name='description',content='')
 		meta(name='viewport',content='width=device-width, initial-scale=1, user-scalable=no')
 		// Place favicon.ico and apple-touch-icon.png in the root directory
-		// build:css(public) vendor.css
+		// build:css app.css
 		link(rel='stylesheet' href='bower_components/font-awesome/css/font-awesome.css')
-		// endbuild
-		// build:css({.tmp,public}) app.css
 		link(rel='stylesheet' href='app.css')
 		// endbuild
 	body
@@ -44,7 +42,7 @@ html
 					.dimmer#feed
 				#state
 		footer
-		script(src='//localhost:35729/livereload.js')
-		// build:js({.tmp,public}) app.js
+		// script(src='//localhost:35729/livereload.js')
+		// build:js app.js
 		script(src='app.js')
 		// endbuild

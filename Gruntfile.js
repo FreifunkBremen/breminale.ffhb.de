@@ -24,45 +24,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-        wiredep: {
-          target: {
-            src: 'public/index.html',
-            ignorePath: 'public/',
-            exclude: []
-          }
-        },
-        useminPrepare: {
-          html: ['public/index.html'],
-          css: ['public/*.css'],
-          js: ['public/*.js'],
-          options: {
-            dest: 'dist',
-            flow: {
-              html: {
-                steps: {
-                  js: ['concat', 'uglifyjs'],
-                  css: ['cssmin']
-                },
-                post: {}
-              }
-            }
-          }
-        },
-        uglify: {
-          options: {
-            mangle: false
-          }
-        },
-        usemin: {
-    			html: ['public/*.html'],
-    			css: ['public/*.css'],
-    			js: ['public/*.js'],
-        },
-        cdnify: {
-    			dist: {
-    				html: ['dist/*.html']
-    			}
-    		},
         copy: {
     			dist: {
     				files: [{
@@ -74,28 +35,37 @@ module.exports = function(grunt) {
     						'*.{ico,png,txt,php}',
     						'.htaccess',
     						//'bower_components/**/*',
-    						'assets/*.png',
-                '!assets/toEdit*.png',
+    						//'assets/*.png',
+    						'!assets/toEdit*.png',
+    						//'app.{js,css}',
     						'index.html'
     					]
     				}, {
     					expand: true,
-    					cwd: 'public/bower_components/semantic-ui/dist/themes',
-    					dest: 'dist/themes',
+    					cwd: 'public/bower_components/font-awesome',
+    					dest: 'dist',
     					src: [
-    						'**/assets/fonts/icons.*'
+    						'fonts/*'
     					]
-    				}, {
-    					expand: true,
-    					cwd: '.tmp/images',
-    					dest: 'dist/assets/images',
-    					src: ['generated/*']
     				}]
     			},
+          inline: {
+    				files: [{
+    					expand: true,
+    					dot: true,
+    					cwd: 'public',
+    					dest: 'dist',
+    					src: [
+                'assets/*.png',
+    						'!assets/toEdit*.png',
+              ]
+            }]
+          }
         },
         jade: {
     			compile: {
     				options: {
+              pretty:true,
     					data: {
     						debug: false
     					}
@@ -111,7 +81,35 @@ module.exports = function(grunt) {
     				}]
     			}
     		},
-
+        useminPrepare: {
+          html: ['public/index.html'],
+          css: ['public/*.css'],
+          js: ['public/*.js'],
+          options: {
+            dest: 'dist'
+          }
+        },
+        uglify: {
+          options: {
+            mangle: false
+          }
+        },
+        usemin: {
+    			html: ['dist/*.html'],
+    			css: ['dist/*.css'],
+    			js: ['dist/*.js'],
+        },
+        inline: {
+          dist: {
+            options:{
+              tag: '',
+              cssmin: true,
+              uglify: true
+            },
+            src: 'dist/index.html',
+            dest: 'dist/index.html'
+          }
+        },
 
         'gh-pages': {
           options: {
@@ -180,30 +178,38 @@ module.exports = function(grunt) {
                 'public/app.css',
     					]
     				}]
-    			}
+    			},
+          inline:{
+            files:[{
+              dot: true,
+              src: [
+                'dist/app.{js,css}',
+              ]
+            }]
+          }
     		}
     });
 
 
     // Tasks.
-    grunt.loadNpmTasks('grunt-wiredep');
     grunt.loadNpmTasks('grunt-gh-pages');
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
+
+    grunt.loadNpmTasks('grunt-usemin');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-google-cdn');
+    grunt.loadNpmTasks('grunt-inline');
 
     grunt.loadNpmTasks('grunt-php');
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-stylus');
-    grunt.loadNpmTasks('grunt-usemin');
 
-    grunt.registerTask('default', [
+    grunt.registerTask('serve', [
         'clean:tmp',
         'jade',
         'stylus:dev',
@@ -217,15 +223,18 @@ module.exports = function(grunt) {
         'clean:dist',
         'jade',
         'stylus:dev',
-        //'wiredep',
         'useminPrepare',
         'concat:generated',
-        'copy:dist',
-        //'cdnify',
         'cssmin:generated',
         'uglify:generated',
+        'copy:dist',
         'usemin',
-        //'gh-pages',
+        'inline:dist',
+        'copy:inline',
+        'clean:inline',
+        'gh-pages',
         'clean:tmp'
       ]);
+
+    grunt.registerTask('default', ['build']);
 };
