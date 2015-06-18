@@ -5,7 +5,7 @@
 $DEV = true;
 $CACHE_UPDATE_TIME = 10;
 $CACHE_PATH = '/tmp/breminale_ffhb_de.cache';
-$FB_PAGE='TravelOK';
+$FB_PAGE='Breminale';
 
 $FB_URL = 'graph.facebook.com/v2.3/'.$FB_PAGE.'/feed';
 $FB_APP_ID = '378325892362983';

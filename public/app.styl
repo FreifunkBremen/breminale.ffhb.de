@@ -1,6 +1,6 @@
 body
 	min-width 320px
-	background #f7f7f7	
+	background #f7f7f7
 	margin 0px
 
 body,*
@@ -8,10 +8,11 @@ body,*
 	font-size 1em
 	line-heigh 1.33
 	box-sizing inherit
-	
+
+@import 'navbar.styl'
 
 .box
-	margin-top 30px
+	margin-top 15px
 	box-shadow 0 0 0 1px rgba(39,41,43,.15),0 1px 2px 0 rgba(0,0,0,.05)
 	border-radius .2857rem
 	background #fff
@@ -35,14 +36,26 @@ main
 		padding-left 4em
 		padding-right 4em
 @media only screen and (min-width: 992px)
+	.box
+		margin-top 30px
+	header.box
+		margin-top 45px
 	.wrapper
 		padding-left 8%
 		padding-right 8%
 @media only screen and (min-width: 1400px)
+	.box
+		margin-top 30px
+	header.box
+		margin-top 45px
 	.wrapper
 		padding-left 15%
 		padding-right 15%
 @media only screen and (min-width: 1920px)
+	.box
+		margin-top 30px
+	header.box
+		margin-top 45px
 	.wrapper
 		padding-left 25% !important
 		padding-right 25% !important
@@ -52,10 +65,23 @@ main
 	padding-bottom 10px
 	margin-bottom 20px
 
+	span
+		width 60px
+
+	.button
+		margin 3px
+
 	> *
 		display inline-block
-	#refresh
-		float right
+//	#refresh
+//		float right
+
+.box.icon
+	text-align center
+	img
+		margin 3%
+		width 38%
+
 #feed
 	.event
 		padding .5rem 0
@@ -68,13 +94,13 @@ main
 
 		.label
 			padding-top .7rem
-			width 2.5em
+			width 1em
 			height 2.5em
 			color rgba(0,0,0,.6)
 
 			.fa
 				font-size 1.5em
-		
+
 		.content
 			padding .5em 0 .5em 1.25em
 
@@ -88,10 +114,15 @@ main
 				color rgba(0,0,0,.8)
 				font-weight 700
 				font-height 1
-				
+				word-wrap break-word
+				overflow hidden
+
 			.meta
 				font-size .71428571rem
 				margin .5em 0 0
+#state
+	padding 5px
+
 .dimmer.active
 	z-index 800
 	background-color rgba(0,0,0,0.85)
@@ -112,5 +143,6 @@ main
 	line-height 1
 	font-weight 700
 
-@import 'navbar.styl'
-
+.button.active 
+	background-color #3b83c0
+	color	#fff

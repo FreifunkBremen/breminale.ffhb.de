@@ -1,7 +1,7 @@
 'use strict';
 
 var a=function(){
-	var _feed_filter='';
+	var _feed_filter='unwetter';
 	var _feed='';
 	var days = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
 
@@ -19,7 +19,7 @@ var a=function(){
 				min = '0'+min;
 
 			var tmp = '<div class="event">';
-			tmp    += '<div class="label"><i class="fa fa-newspaper-o"></i></div>';
+			tmp    += '<div class="label"><i class="fa fa-facebook"></i></div>';
 			tmp    += '<div class="content">';
 			tmp    += '<div class="date">'+days[d.getDay()]+', '+hour+':'+min+'</div>';
 			tmp    += '<div class="summary">'+item.message+'</div>';
@@ -70,6 +70,15 @@ var a=function(){
 		filterE.childNodes[i].onclick = function(){
 			var feed = document.getElementById('feed')
 //			feed.innerHTML = '';
+			for(var j = 0; j < filterE.childNodes.length; j++){
+				var e = filterE.childNodes[j].className;
+				e +='';
+				e=e.replace('active','');
+				e=e.replace('  ',' ');
+				filterE.childNodes[j].className = e;
+				console.log(e);
+			}
+			this.className += ' active';
 			feed.className += ' active';
 			_feed_filter = this.getAttribute('name');
 			show_feed();

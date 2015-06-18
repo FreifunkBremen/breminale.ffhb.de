@@ -14,9 +14,7 @@ html
 	body
 		.wrapper
 			header.box
-				img.ffhb(src='assets/logo_ffhb.png')
-				img.goes.computer.tablet.only(src='assets/header_goes.png')
-				img.breminale(src='assets/logo_breminale.png')
+				img(src='assets/header.png')
 			main
 				.box
 					h1 Freifunk Bremen – WLAN für alle, überall
@@ -24,19 +22,40 @@ html
 					| Es gibt
 					b  WLAN
 					|  auf der Breminale!
+					br
 					| Das offene WLAN
 					b  bremen.freifunk.net
 					|  bietet euch freien Zugang zum Internet.
-					| Realisiert wird dies von Bürgern an bereits über 200 Standorten in Bremen. Das Ziel der Freifunker besteht darin viele WLAN-Router aufzustellen, welche sich untereinander verbinden und so ein lokales Netzwerk mit Internetzugang in Bürgerhand aufbauen. Jeder kann Freifunk nutzen oder rechtssicher selbst anbieten - beispielsweise für Gäste.
+					br
+					| Realisiert wird dies von
+					b  Bürgern
+					|  an bereits über 200 Standorten in Bremen. Das Ziel der Freifunker besteht darin viele WLAN-Router aufzustellen, welche sich untereinander verbinden und so ein lokales Netzwerk mit Internetzugang in Bürgerhand aufbauen. Jeder kann Freifunk nutzen oder rechtssicher selbst anbieten - beispielsweise für Gäste.
+					br
 					| Alle Infos und Fragen bekommt ihr beantwortet beim Freifunk-Stand am Fahnenmast und auf bremen.freifunk.net
+				.box.icon
+					a(href='http://breminale.sternkultur.de')
+						img(src='assets/logo_breminale.png')
+					| &nbsp;
+					a(href='http://bremen.freifunk.net')
+						img(src='assets/logo_ffhb_skyline.png')
+					| &nbsp;
+					br
+					a(href='http://breminale.sternkultur.de/app')
+						img(src='assets/app_android.png')
+					| &nbsp;
+					a(href='https://itunes.apple.com/de/app/breminale/id533394658?ls=1&mt=8')
+						img(src='assets/app_iphone.png')
+					| &nbsp;
 				.box
 					h1 Feed
 					.bar
-						| Filter: &nbsp;
+						span Filter: &nbsp;
 						#filter
-							.button(name='') All
-							.button(name='twocootstravel') twocootstravel
-							.button(name='StateParkSunday') StateParkSunday
+							.button(name='') Alles
+							.active.button(name='unwetter') #unwetter
+							.button(name='bremenlebt') #bremenlebt
+						br
+						span Neuladen: 
 						.button#refresh
 							i.fa.fa-refresh
 					.dimmer#feed
