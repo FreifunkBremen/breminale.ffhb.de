@@ -1,10 +1,48 @@
 'use strict';
 
-var a=function(){
-	var _feed_filter='unwetter';
-	var _feed='';
-	var days = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
+angular.module('ffhbApp',[])
+.filter('parseUrl',['$sce',function($sce) {
+	// var replacePattern = /(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gim;
+	var replacePattern = /\b((http:\/\/|https:\/\/|ftp:\/\/|mailto:|news:)|www\.|ftp\.|[^ \,\;\:\!\)\(\""\'\<\>\f\n\r\t\v]+@)([^ \,\;\:\!\)\(\""\'\<\>\f\n\r\t\v]+)\b/gim;
 
+	return function(text, target, otherProp) {
+		if(text == undefined || text == ""){
+			return "";
+		}else{
+			return $sce.trustAsHtml(text.replace(replacePattern, function($0,$1) {
+				if ((/^www\./i).test($0))
+					return '<a href="http://'+$0+'">Link</a>';
+				return '<a href="'+$0+'">Link</a>';
+			}));
+		}
+	};
+}])
+.controller('MainCtrl',['$scope','$http','$filter',function($scope,$http,$filter) {
+	$scope._filter = 'unwetter';
+	$scope._days = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
+	$scope.feed = [];
+	$scope.state = {lastUpdate:'',Iterator:'0'};
+	$scope.dimmer = true;
+	$scope.refresh = function(fn){
+		$scope.dimmer = true;
+		$http.get('data.php').success(function(r){
+			$scope.feed = r.feed;
+			$scope.state.lastUpdate = r.lastUpdate;
+			$scope.state.Iterator = r.Iterator;
+			if(typeof fn == 'function')
+				fn();
+			$scope.dimmer = false;
+		});
+	};
+	$scope.setFilter = function(args){
+			$scope._filter = args;
+		};
+	$scope.refresh(function(){
+		if(($filter('filter')($scope.feed, {hashtags:$scope._filter})).length <= 0)
+			$scope._filter = '!undefined';
+	});
+}]);
+/*
 	function show_feed(){
 		var innerHTML = '';
 		for (var i in _feed.feed){
@@ -33,10 +71,9 @@ var a=function(){
 			tmp    += '</div>';
 			tmp    += '</div>';
 			if(filter_ok || _feed_filter == '')
-				innerHTML +=tmp;	
+				innerHTML +=tmp;
 		}
 		document.getElementById('feed').innerHTML = innerHTML;
-		document.getElementById('state').innerHTML = '<p>last refresh: '+new Date(_feed.lastUpdate)+'<br/>count of refresh: '+_feed.Iterator+'</p>';
 	}
 
 	function refresh(){
@@ -85,6 +122,6 @@ var a=function(){
 			feed.className = feed.className.replace('active','');
 			feed.className = feed.className.replace('  ',' ');
 		}
-	
+
 	}
-}();
+}();*/

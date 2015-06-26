@@ -1,5 +1,5 @@
 doctype html
-html
+html(ng-app='ffhbApp')
 	head
 		meta(charset='utf-8')
 		meta(http-equiv='X-UA-Compatible',content='IE=edge')
@@ -11,7 +11,7 @@ html
 		link(rel='stylesheet' href='bower_components/font-awesome/css/font-awesome.css')
 		link(rel='stylesheet' href='app.css')
 		// endbuild
-	body
+	body(ng-controller='MainCtrl')
 		.wrapper
 			header.box
 				img(src='assets/header.png')
@@ -47,21 +47,37 @@ html
 						img(src='assets/app_iphone.png')
 					| &nbsp;
 				.box
-					h1 Feed
+					h1 Breminale Facebook Feed
 					.bar
-						span Filter: &nbsp;
 						#filter
-							.button(name='') Alles
-							.active.button(name='unwetter') #unwetter
-							.button(name='bremenlebt') #bremenlebt
+							.button(ng-click='setFilter("!undefined")',ng-class='{"active":(_filter=="!undefined")}') alle Posts
+							.button(ng-click='setFilter("unwetter")',ng-class='{"active":(_filter=="unwetter")}') #unwetter
+							.button(ng-click='setFilter("bremenlebt")',ng-class='{"active":(_filter=="bremenlebt")}') #bremenlebt
 						br
-						span Aktualisieren: 
-						.button#refresh
-							i.fa.fa-refresh
-					.dimmer#feed
+						.right
+							.button#refresh(ng-click='refresh()')
+								i.fa.fa-refresh(ng-class='{"fa-spin":dimmer}')
+								|    Aktualisieren
+					.dimmer#feed(ng-class='{"active":dimmer}')
+						div(ng-hide='a.length > 0')
+							center Keine Post gefunden!
+						.event(ng-repeat='i in a=(feed|filter:{hashtags:_filter}:false)')
+							.label
+								i.fa.fa-facebook
+							.content
+								.date {{i.created_time|date:'EEEE d.M, HH:mm'}}
+								.summary(ng-bind-html='i.message|parseUrl')
+								.meta
+									.button(ng-repeat='t in i.hashtags',ng-click='setFilter(t)') \#{{t}}
 				#state
+					p
+						| last refresh: {{state.lastUpdate*1000|date:'dd.MM.yyyy HH:mm:ss'}}
+						br
+						| count of refresh: {{state.Iterator}}
 		footer
 		// script(src='//localhost:35729/livereload.js')
 		// build:js app.js
+		script(src='bower_components/angularjs/angular.min.js')
+		script(src='bower_components/angular-i18n/angular-locale_de.js')
 		script(src='app.js')
 		// endbuild

@@ -3,5 +3,9 @@
   "version": "0.1.1",
   "devDependencies": {
     "font-awesome": "~4.3.0"
+  },
+  "dependencies": {
+    "angularjs": "~1.4.1",
+    "angular-i18n": "~1.4.1"
   }
 }

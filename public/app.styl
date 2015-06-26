@@ -73,6 +73,9 @@ main
 
 	> *
 		display inline-block
+	.right
+		display block
+		text-align right
 //	#refresh
 //		float right
 
@@ -83,10 +86,10 @@ main
 		width 38%
 
 #feed
+
 	.event
 		padding .5rem 0
 		display table
-		width  100%
 		> *
 			display	table-cell
 			vertical-align top
@@ -97,6 +100,7 @@ main
 			width 1em
 			height 2.5em
 			color rgba(0,0,0,.6)
+			float left
 
 			.fa
 				font-size 1.5em
@@ -115,8 +119,8 @@ main
 				font-weight 700
 				font-height 1
 				word-wrap break-word
+				word-break break-word
 				overflow hidden
-
 			.meta
 				font-size .71428571rem
 				margin .5em 0 0
@@ -143,6 +147,9 @@ main
 	line-height 1
 	font-weight 700
 
-.button.active 
+	.fa
+		display inline
+
+.button.active
 	background-color #3b83c0
 	color	#fff
