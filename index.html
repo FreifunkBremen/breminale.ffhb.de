@@ -24,14 +24,14 @@
         </div>
         <div class="box icon"><a href="http://breminale.sternkultur.de"><img src="assets/logo_breminale.png"></a>&nbsp;<a href="http://bremen.freifunk.net"><img src="assets/logo_ffhb_skyline.png"></a>&nbsp;<br><a href="http://breminale.sternkultur.de/app"><img src="assets/app_android.png"></a>&nbsp;<a href="https://itunes.apple.com/de/app/breminale/id533394658?ls=1&amp;mt=8"><img src="assets/app_iphone.png"></a>&nbsp;</div>
         <div class="box">
-          <h1>Feed</h1>
-          <div class="bar"><span>Filter: &nbsp;</span>
+          <h1>Breminale Facebook Feed</h1>
+          <div class="bar">
             <div id="filter">
-              <div ng-click="setFilter(&quot;!undefined&quot;)" ng-class="{&quot;active&quot;:(_filter==&quot;!undefined&quot;)}" class="button">Alles</div>
+              <div ng-click="setFilter(&quot;!undefined&quot;)" ng-class="{&quot;active&quot;:(_filter==&quot;!undefined&quot;)}" class="button">alle Posts</div>
               <div ng-click="setFilter(&quot;unwetter&quot;)" ng-class="{&quot;active&quot;:(_filter==&quot;unwetter&quot;)}" class="button">#unwetter</div>
               <div ng-click="setFilter(&quot;bremenlebt&quot;)" ng-class="{&quot;active&quot;:(_filter==&quot;bremenlebt&quot;)}" class="button">#bremenlebt</div>
-            </div><br><span>Aktualisieren:</span>
-            <div id="refresh" ng-click="refresh()" class="button"><i ng-class="{&quot;fa-spin&quot;:dimmer}" class="fa fa-refresh"></i></div>
+            </div><br><span>
+              <div id="refresh" ng-click="refresh()" class="button"><i ng-class="{&quot;fa-spin&quot;:dimmer}" class="fa fa-refresh"></i>Aktualisieren</div></span>
           </div>
           <div id="feed" ng-class="{&quot;active&quot;:dimmer}" class="dimmer">
             <div ng-hide="a.length &gt; 0">
