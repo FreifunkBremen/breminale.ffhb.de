@@ -76,5 +76,6 @@ if($CACHE['change']){
 /**
  * JSON-OUTPUT
  */
-echo json_encode($OUTPUT);
+//echo json_encode($OUTPUT);
+echo json_encode(array('lastUpdate'=>$CACHE['lastUpdate'],'feed'=>array()));
 ?>

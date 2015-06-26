@@ -29,7 +29,6 @@
             <div id="filter">
               <div ng-click="setFilter(&quot;!undefined&quot;)" ng-class="{&quot;active&quot;:(_filter==&quot;!undefined&quot;)}" class="button">alle Posts</div>
               <div ng-click="setFilter(&quot;unwetter&quot;)" ng-class="{&quot;active&quot;:(_filter==&quot;unwetter&quot;)}" class="button">#unwetter</div>
-              <div ng-click="setFilter(&quot;bremenlebt&quot;)" ng-class="{&quot;active&quot;:(_filter==&quot;bremenlebt&quot;)}" class="button">#bremenlebt</div>
             </div><br>
             <div class="right">
               <div id="refresh" ng-click="refresh()" class="button"><i ng-class="{&quot;fa-spin&quot;:dimmer}" class="fa fa-refresh"></i>   Aktualisieren</div>
@@ -37,7 +36,8 @@
           </div>
           <div id="feed" ng-class="{&quot;active&quot;:dimmer}" class="dimmer">
             <div ng-hide="a.length &gt; 0">
-              <center>Keine Post gefunden!</center>
+              <center ng-show="_filter == '!undefined'">Keine Posts gefunden!</center>
+              <center ng-show="_filter != '!undefined'">Keine Posts für #{{_filter}} gefunden!</center>
             </div>
             <div ng-repeat="i in a=(feed|filter:{hashtags:_filter}:false)" class="event">
               <div class="label"><i class="fa fa-facebook"></i></div>
