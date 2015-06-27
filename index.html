@@ -22,13 +22,14 @@
           <h1>Freifunk Bremen – WLAN für alle, überall</h1>
           <p></p>Es gibt<b> WLAN</b> auf der Breminale!<br>Das offene WLAN<b> bremen.freifunk.net</b> bietet euch freien Zugang zum Internet.<br>Realisiert wird dies von<b> Bürgern</b> an bereits über 200 Standorten in Bremen. Das Ziel der Freifunker besteht darin viele WLAN-Router aufzustellen, welche sich untereinander verbinden und so ein lokales Netzwerk mit Internetzugang in Bürgerhand aufbauen. Jeder kann Freifunk nutzen oder rechtssicher selbst anbieten - beispielsweise für Gäste.<br>Alle Infos und Fragen bekommt ihr beantwortet beim Freifunk-Stand am Fahnenmast und auf bremen.freifunk.net
         </div>
-        <div class="box icon"><a href="http://breminale.sternkultur.de"><img src="assets/logo_breminale.png"></a>&nbsp;<a href="http://bremen.freifunk.net"><img src="assets/logo_ffhb_skyline.png"></a>&nbsp;<br><a href="http://breminale.sternkultur.de/app"><img src="assets/app_android.png"></a>&nbsp;<a href="https://itunes.apple.com/de/app/breminale/id533394658?ls=1&amp;mt=8"><img src="assets/app_iphone.png"></a>&nbsp;</div>
+        <div class="box icon"><a href="http://breminale.sternkultur.de"><img src="assets/logo_breminale.png"></a>&nbsp;<a href="http://bremen.freifunk.net"><img src="assets/logo_ffhb_skyline.png"></a>&nbsp;<br><a href="https://play.google.com/store/apps/details?id=de.bjoernahlfeld.breminale2014"><img src="assets/app_android.png"></a>&nbsp;<a href="https://itunes.apple.com/de/app/breminale/id533394658?ls=1&amp;mt=8"><img src="assets/app_iphone.png"></a>&nbsp;</div>
         <div class="box">
-          <h1>Breminale Facebook Feed</h1>
-          <div class="bar clearfix">
+          <h1 class="clearfix">Breminale Facebook Feed
+            <div id="refresh" ng-click="refresh()" class="button right"><i ng-class="{&quot;fa-spin&quot;:dimmer}" class="fa fa-refresh"></i>   Aktualisieren</div>
+          </h1>
+          <div class="bar">
             <div ng-click="setFilter(&quot;!undefined&quot;)" ng-class="{&quot;active&quot;:(_filter==&quot;!undefined&quot;)}" class="button">alle Posts</div>
             <div ng-click="setFilter(&quot;unwetter&quot;)" ng-class="{&quot;active&quot;:(_filter==&quot;unwetter&quot;)}" class="button">#unwetter</div>
-            <div id="refresh" ng-click="refresh()" class="button right"><i ng-class="{&quot;fa-spin&quot;:dimmer}" class="fa fa-refresh"></i>   Aktualisieren</div>
           </div>
           <div id="feed" ng-class="{&quot;active&quot;:dimmer}" class="dimmer">
             <div ng-hide="a.length &gt; 0">
