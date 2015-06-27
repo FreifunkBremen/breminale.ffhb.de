@@ -11,11 +11,26 @@ body,*
 
 @import 'navbar.styl'
 
+h1
+	font-size 1.5em
+
 .box
 	margin-top 15px
 	box-shadow 0 0 0 1px rgba(39,41,43,.15),0 1px 2px 0 rgba(0,0,0,.05)
 	border-radius .2857rem
 	background #fff
+
+
+.right
+	float right
+.clearfix
+	*zoom 1
+.clearfix:after
+		clear both
+.clearfix:after
+.clearfix:before
+		content: "";
+		display: table;
 
 main .box
 	padding 15px
@@ -69,15 +84,21 @@ main
 		width 75px
 
 	.button
-		margin 3px
+		margin-left 0px
+		margin-right 0px
+		border-radius 0px
+		float left
+
+	.button:first-child
+		border-left-top-radius .2857rem
+		border-left-bottom-radius .2857rem
+
+	.button:last-child
+		border-right-top-radius .2857rem
+		border-right-bottom-radius .2857rem
 
 	> *
 		display inline-block
-	.right
-		display block
-		text-align right
-//	#refresh
-//		float right
 
 .box.icon
 	text-align center
@@ -144,6 +165,7 @@ main
 	border-radius .2857rem
 	box-shadow 0 0 0 1px transparent inset,0 0 0 0 rgba(39,41,43,.15)inset
 	display inline-block
+	font-size medium
 	line-height 1
 	font-weight 700
 

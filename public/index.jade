@@ -40,27 +40,24 @@ html(ng-app='ffhbApp')
 						img(src='assets/logo_ffhb_skyline.png')
 					| &nbsp;
 					br
-					a(href='http://breminale.sternkultur.de/app')
+					a(href='https://play.google.com/store/apps/details?id=de.bjoernahlfeld.breminale2014')
 						img(src='assets/app_android.png')
 					| &nbsp;
 					a(href='https://itunes.apple.com/de/app/breminale/id533394658?ls=1&mt=8')
 						img(src='assets/app_iphone.png')
 					| &nbsp;
 				.box
-					h1 Breminale Facebook Feed
-					.bar
-						#filter
-							.button(ng-click='setFilter("!undefined")',ng-class='{"active":(_filter=="!undefined")}') alle Posts
-							.button(ng-click='setFilter("unwetter")',ng-class='{"active":(_filter=="unwetter")}') #unwetter
-							.button(ng-click='setFilter("bremenlebt")',ng-class='{"active":(_filter=="bremenlebt")}') #bremenlebt
-						br
-						.right
-							.button#refresh(ng-click='refresh()')
-								i.fa.fa-refresh(ng-class='{"fa-spin":dimmer}')
-								|    Aktualisieren
+					h1.clearfix Breminale Feed
+						.button.right#refresh(ng-click='refresh()')
+							i.fa.fa-refresh(ng-class='{"fa-spin":dimmer}')
+							|    Aktualisieren
+					.bar.clearfix
+						.button(ng-click='setFilter("!undefined")',ng-class='{"active":(_filter=="!undefined")}') alle Posts
+						.button(ng-click='setFilter("unwetter")',ng-class='{"active":(_filter=="unwetter")}') #unwetter
 					.dimmer#feed(ng-class='{"active":dimmer}')
 						div(ng-hide='a.length > 0')
-							center Keine Post gefunden!
+							center(ng-show="_filter == '!undefined'") Keine Posts gefunden!
+							center(ng-show="_filter != '!undefined'") Keine Posts für \#{{_filter}} gefunden!
 						.event(ng-repeat='i in a=(feed|filter:{hashtags:_filter}:false)')
 							.label
 								i.fa.fa-facebook

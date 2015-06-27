@@ -3,6 +3,7 @@ node_modules
 logs
 *.log
 public/*.css
+public/*.html
 public/app/**/*.html
 public/components/**/*.html
 public/bower_components
