@@ -16,6 +16,14 @@ html(ng-app='ffhbApp')
 			header.box
 				img(src='assets/header.png')
 			main
+				.alert.event(ng-show='alert.exists',ng-class='{"important":alert.unwetter}')
+					.label
+						i.fa.fa-sun-o(ng-show='!alert.unwetter')
+						i.fa.fa-exclamation-triangle(ng-show='alert.unwetter')
+					.content
+						.date
+							i {{alert.msg.created_time|date:'EEEE d.M, HH:mm'}}
+							.summary(ng-bind-html='alert.msg.message|parseUrl')
 				.box
 					h1 Freifunk Bremen – WLAN für alle, überall
 					p
@@ -52,7 +60,7 @@ html(ng-app='ffhbApp')
 							|    Aktualisieren
 					.bar.clearfix
 						.button(ng-click='setFilter("!undefined")',ng-class='{"active":(_filter=="!undefined")}') alle Posts
-						.button(ng-click='setFilter("unwetter")',ng-class='{"active":(_filter=="unwetter")}') #unwetter
+						.button(ng-click='setFilter("wetter")',ng-class='{"active":(_filter=="wetter")}') #wetter
 					.dimmer#feed(ng-class='{"active":dimmer}')
 						div(ng-hide='a.length > 0')
 							center(ng-show="_filter == '!undefined'") Keine Posts gefunden!
@@ -67,7 +75,7 @@ html(ng-app='ffhbApp')
 									.button(ng-repeat='t in i.hashtags',ng-click='setFilter(t)') \#{{t}}
 				#state
 					p
-						| last refresh: {{state.lastUpdate*1000|date:'dd.MM.yyyy HH:mm:ss'}}
+						| last refresh: {{state.lastUpdate|date:'dd.MM.yyyy HH:mm:ss'}}
 						br
 						| count of refresh: {{state.Iterator}}
 		footer

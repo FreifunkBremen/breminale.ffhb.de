@@ -11,6 +11,10 @@ body,*
 
 @import 'navbar.styl'
 
+a
+	text-decoration none
+	color #4183c4
+
 h1
 	font-size 1.5em
 
@@ -121,45 +125,43 @@ main
 	> *
 		display inline-block
 
-#feed
+.event
+	padding .5rem 0
+	display table
+	> *
+		display	table-cell
+		vertical-align top
+		text-align left
 
-	.event
-		padding .5rem 0
-		display table
-		> *
-			display	table-cell
-			vertical-align top
-			text-align left
+	.label
+		padding-top .7rem
+		width 1em
+		height 2.5em
+		color rgba(0,0,0,.6)
+		float left
 
-		.label
-			padding-top .7rem
-			width 1em
-			height 2.5em
-			color rgba(0,0,0,.6)
-			float left
+		.fa
+			font-size 1.5em
 
-			.fa
-				font-size 1.5em
+	.content
+		padding .5em 0 .5em 1.25em
 
-		.content
-			padding .5em 0 .5em 1.25em
-
-			.date
-				padding 0
-				font-weight 400
-				font-size 1em
-				font-style normal
-				color rgba(0,0,0,.4)
-			.summary
-				color rgba(0,0,0,.8)
-				font-weight 700
-				font-height 1
-				word-wrap break-word
-				word-break break-word
-				overflow hidden
-			.meta
-				font-size .71428571rem
-				margin .5em 0 0
+		.date
+			padding 0
+			font-weight 400
+			font-size 1em
+			font-style normal
+			color rgba(0,0,0,.4)
+		.summary
+			color rgba(0,0,0,.8)
+			font-weight 700
+			font-height 1
+			word-wrap break-word
+			word-break break-word
+			overflow hidden
+		.meta
+			font-size .71428571rem
+			margin .5em 0 0
 #state
 	padding 5px
 
@@ -168,6 +170,8 @@ main
 	background-color rgba(0,0,0,0.85)
 	border-radius	.2873rem
 
+	a
+		color black
 	*
 		z-index 800
 		background-color rgba(0,0,0,0.1)
@@ -190,3 +194,20 @@ main
 .button.active
 	background-color #3b83c0
 	color	#fff
+.meta .button
+	padding 0.55em 0.7em
+	font-size 10px
+	font-weight 500
+
+.alert
+	display	block
+	padding 5px 15px
+	margin-bottom 20px
+	border 1px solid #d6e9c6
+	border-radius 4px
+	color #3c763d
+	background-color #dff0d8
+.alert.important
+	color #a94442
+	background-color #f2dede
+	border-color #ebccd1

@@ -2,8 +2,8 @@
 /**
  * Settings
  */
-$DEV = true;
-$CACHE_UPDATE_TIME = 10;
+$DEV = false;
+$CACHE_UPDATE_TIME = 10000;
 $CACHE_PATH = '/tmp/breminale_ffhb_de.cache';
 $FB_PAGE='Breminale';
 
@@ -18,7 +18,7 @@ $FB_Token = '?fields=message'.
  * DECLARE CACHE
  */
 $CACHE = json_decode(file_get_contents($CACHE_PATH), true);
-if(($CACHE['lastUpdate']+$CACHE_UPDATE_TIME) <= (time())){
+if(($CACHE['lastUpdate']+$CACHE_UPDATE_TIME) <= (time()*1000)){
 	$CACHE['change'] = true;
 	/**
 	 * UPDATE CACHE:
@@ -43,9 +43,12 @@ if(($CACHE['lastUpdate']+$CACHE_UPDATE_TIME) <= (time())){
 				}
 				$item['hashtags'] = $tags;
 			}
+			$item['created_time'] = strtotime($item['created_time'])*1000;
 			$CACHE['feed'][]=$item;
 		}
 	}
+	$CACHE['lastUpdate'] = time()*1000;
+	$CACHE['today'] = mktime(0, 0, 0, date("m")  , date("d"), date("Y"))*1000;
 }
 
 
@@ -54,23 +57,36 @@ if(($CACHE['lastUpdate']+$CACHE_UPDATE_TIME) <= (time())){
  * JSON-OUTPUT-Variable
  */
 $OUTPUT = array();
-//DEV OUTPUT
-if($DEV){
-	$OUTPUT['time'] = time();
-	$OUTPUT['lastUpdate'] = $CACHE['lastUpdate'];
-}
-/**
- * Convert:
- */
+$OUTPUT['time'] = time()*1000;
+$OUTPUT['lastUpdate'] = $CACHE['lastUpdate'];
 $OUTPUT['Iterator'] = $CACHE['Iterator'];
+$OUTPUT['today'] = $CACHE['today'];
 $OUTPUT['feed'] = $CACHE['feed'];
-
+if($DEV){
+	$OUTPUT['feed'][] = array(
+		'id' => 'i348586768525834_959578534093318',
+		'message' => 'Fake Test #wetter ist wieder Gut',
+		'created_time' => mktime(2, 0, 0, date("m")  , date("d"), date("Y"))*1000,
+		'hashtags' => array(
+			'wetter'
+		)
+	);
+	$OUTPUT['feed'][] = array(
+		'id' => 'i348586768525834_959578534093318',
+		'message' => 'Fake Test #wetter #unwetter',
+		'created_time' => mktime(1, 10, 0, date("m")  , date("d"), date("Y"))*1000,
+		'hashtags' => array(
+			'wetter',
+			'unwetter'
+		)
+	);
+}
 /**
  * SAVE CACHE
  */
 if($CACHE['change']){
 	$CACHE['change'] = false;
-	$CACHE['lastUpdate'] = time();
+	$CACHE['lastUpdate'] = time()*1000;
 	file_put_contents($CACHE_PATH, json_encode($CACHE));
 }
 /**

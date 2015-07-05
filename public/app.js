@@ -18,17 +18,34 @@ angular.module('ffhbApp',[])
 	};
 }])
 .controller('MainCtrl',['$scope','$http','$filter',function($scope,$http,$filter) {
-	$scope._filter = 'unwetter';
+	$scope._filter = 'wetter';
 	$scope._days = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
 	$scope.feed = [];
+	$scope.alert = {exists:false,msg:{},unwetter:false};
 	$scope.state = {lastUpdate:'',Iterator:'0'};
 	$scope.dimmer = true;
 	$scope.refresh = function(fn){
 		$scope.dimmer = true;
 		$http.get('data.php').success(function(r){
-			$scope.feed = r.feed;
+			$scope.feed = $filter('orderBy')(r.feed, 'created_time',true);
 			$scope.state.lastUpdate = r.lastUpdate;
 			$scope.state.Iterator = r.Iterator;
+			var tmp = $filter('filter')($scope.feed, {hashtags:'wetter'});
+			if(tmp.length>0){
+				$scope.alert.msg = tmp[0];
+				if($scope.alert.msg.created_time>=r.today){
+					$scope.alert.exists = true;
+					$scope.alert.unwetter = ($filter('filter')([$scope.alert.msg], {hashtags:'unwetter'}).length > 0);
+				}else{
+					$scope.alert.exists = false;
+					$scope.alert.msg = {};
+					$scope.alert.unwetter = false;
+				}
+			}else{
+				$scope.alert.exists = false;
+				$scope.alert.msg = {};
+				$scope.alert.unwetter = false;
+			}
 			if(typeof fn == 'function')
 				fn();
 			$scope.dimmer = false;
@@ -42,86 +59,3 @@ angular.module('ffhbApp',[])
 			$scope._filter = '!undefined';
 	});
 }]);
-/*
-	function show_feed(){
-		var innerHTML = '';
-		for (var i in _feed.feed){
-			var filter_ok = false;
-			var item = _feed.feed[i];
-			var d = new Date(item.created_time);
-			var hour = d.getHours();
-			if(hour < 10)
-				hour = '0'+hour;
-			var min = d.getMinutes();
-			if(min < 10)
-				min = '0'+min;
-
-			var tmp = '<div class="event">';
-			tmp    += '<div class="label"><i class="fa fa-facebook"></i></div>';
-			tmp    += '<div class="content">';
-			tmp    += '<div class="date">'+days[d.getDay()]+', '+hour+':'+min+'</div>';
-			tmp    += '<div class="summary">'+item.message+'</div>';
-			tmp    += '<div class="meta">';
-			for(var j in item.hashtags){
-				tmp    += '<div class="button">'+item.hashtags[j]+'</div>';
-				if(!filter_ok)
-					filter_ok = (item.hashtags[j]==_feed_filter);
-			}
-			tmp    += '</div>';
-			tmp    += '</div>';
-			tmp    += '</div>';
-			if(filter_ok || _feed_filter == '')
-				innerHTML +=tmp;
-		}
-		document.getElementById('feed').innerHTML = innerHTML;
-	}
-
-	function refresh(){
-		var feed = document.getElementById('feed')
-//		feed.innerHTML = '';
-		feed.className += ' active';
-		var xmlhttp;
-		if (window.XMLHttpRequest){
-			// code for IE7+, Firefox, Chrome, Opera, Safari
-			xmlhttp=new XMLHttpRequest();
-		}else{
-			// code for IE6, IE5
-			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		xmlhttp.onreadystatechange=function(){
-			if(xmlhttp.readyState==4 && xmlhttp.status==200){
-				_feed=JSON.parse(xmlhttp.responseText);
-				show_feed();
-				feed.className = feed.className.replace('active','');
-				feed.className = feed.className.replace('  ',' ');
-			}
-		}
-		xmlhttp.open("GET","data.php",true);
-		xmlhttp.send();
-	}
-	document.getElementById('refresh').onclick = refresh;
-	refresh();
-
-	var filterE = document.getElementById('filter');
-	for(var i = 0; i < filterE.childNodes.length; i++){
-		filterE.childNodes[i].onclick = function(){
-			var feed = document.getElementById('feed')
-//			feed.innerHTML = '';
-			for(var j = 0; j < filterE.childNodes.length; j++){
-				var e = filterE.childNodes[j].className;
-				e +='';
-				e=e.replace('active','');
-				e=e.replace('  ',' ');
-				filterE.childNodes[j].className = e;
-				console.log(e);
-			}
-			this.className += ' active';
-			feed.className += ' active';
-			_feed_filter = this.getAttribute('name');
-			show_feed();
-			feed.className = feed.className.replace('active','');
-			feed.className = feed.className.replace('  ',' ');
-		}
-
-	}
-}();*/
