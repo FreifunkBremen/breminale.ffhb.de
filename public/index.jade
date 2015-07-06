@@ -60,12 +60,12 @@ html(ng-app='ffhbApp')
 							|    Aktualisieren
 					.bar.clearfix
 						.button(ng-click='setFilter("!undefined")',ng-class='{"active":(_filter=="!undefined")}') alle Posts
-						.button(ng-click='setFilter("wetter")',ng-class='{"active":(_filter=="wetter")}') #wetter
+						.button(ng-click='setFilter("wetter")',ng-class='{"active":(_filter=="Wetter")}') Wetter
 					.dimmer#feed(ng-class='{"active":dimmer}')
 						div(ng-hide='a.length > 0')
 							center(ng-show="_filter == '!undefined'") Keine Posts gefunden!
-							center(ng-show="_filter != '!undefined'") Keine Posts für \#{{_filter}} gefunden!
-						.event(ng-repeat='i in a=(feed|filter:{hashtags:_filter}:false)')
+							center(ng-show="_filter != '!undefined'") Keine Posts für {{_filter}} gefunden!
+						.event(ng-repeat='i in a=(feed|hashtagFilter:_filter)')
 							.label
 								i.fa.fa-facebook
 							.content
