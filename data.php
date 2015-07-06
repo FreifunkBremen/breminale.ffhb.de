@@ -2,7 +2,7 @@
 /**
  * Settings
  */
-$DEV = true;
+$DEV = false;
 $CACHE_UPDATE_TIME = 10000;
 $CACHE_PATH = '/tmp/breminale_ffhb_de.cache';
 $FB_PAGE='Breminale';
