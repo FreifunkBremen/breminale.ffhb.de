@@ -65,19 +65,19 @@ $OUTPUT['feed'] = $CACHE['feed'];
 if($DEV){
 	$OUTPUT['feed'][] = array(
 		'id' => 'i348586768525834_959578534093318',
-		'message' => 'Fake Test #wetter ist wieder Gut',
+		'message' => 'Liebes Breminalevolk! Leider meldet der Deutsche Wetterdienst in Hamburg eine amtliche Warnung vor einsetzen, bis einsetzen. So doof das auch ist müssen wir an dieser Stelle den kunterbunten Spaß kurz unterbrechen und die Zelte aus Sicherheitsgründen schließen. Danke für euer Verständnis, wir melden sofort wenn es weitergeht. Haltet durch! ? Und wie nutzt ihr die Pause? #Breminale #Unwetter',
 		'created_time' => mktime(2, 0, 0, date("m")  , date("d"), date("Y"))*1000,
 		'hashtags' => array(
-			'wetter'
+			'Breminale',
+			'unwetter'
 		)
 	);
 	$OUTPUT['feed'][] = array(
 		'id' => 'i348586768525834_959578534093318',
-		'message' => 'Fake Test #wetter #unwetter',
+		'message' => 'Fake Test #unwetter',
 		'created_time' => mktime(1, 10, 0, date("m")  , date("d"), date("Y"))*1000,
 		'hashtags' => array(
-			'wetter',
-			'unwetter'
+			'Wetter'
 		)
 	);
 }
