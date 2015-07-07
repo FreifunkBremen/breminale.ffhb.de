@@ -85,7 +85,7 @@ if($DEV){
 		'id' => 'i348586768525834_959578534093318',
 		'message' => 'Ihr tapferen Leute,
 endlich ist es soweit! Der Deutsche Wetterdienst hebt seine Warnung auf und gönnt uns wieder unseren unbehinderten Spaß!  #Breminale #Wetter',
-		'created_time' => mktime(3, 10, 0, date("m")  , date("d"), date("Y"))*1000,
+		'created_time' => mktime(1, 10, 0, date("m")  , date("d"), date("Y"))*1000,
 		'hashtags' => array(
 			'Breminale',
 			'Wetter'
