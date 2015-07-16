@@ -21,7 +21,6 @@ angular.module('ffhbApp',[])
 	return function(input, filter,exactCase) {
 		exactCase = exactCase||false;
 		var result = [];
-		console.log(filter);
 		if(!filter || (filter == '!undefined')){
 			return input;
 		}
@@ -46,6 +45,7 @@ angular.module('ffhbApp',[])
 	$scope._filter = 'Wetter';
 	$scope._days = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
 	$scope.feed = [];
+	$scope.statistic = {client24:0,client50:0,clients:0};
 	$scope.alert = {exists:false,msg:{},unwetter:false};
 	$scope.state = {lastUpdate:'',Iterator:'0'};
 	$scope.dimmer = true;
@@ -53,6 +53,8 @@ angular.module('ffhbApp',[])
 	$scope.refresh = function(fn){
 		$scope.dimmer = true;
 		$http.get('data.php').success(function(r){
+			if(r.statistic)
+			$scope.statistic = r.statistic;
 			$scope.feed = $filter('orderBy')(r.feed, 'created_time',true);
 			$scope.state.lastUpdate = r.lastUpdate;
 			$scope.state.Iterator = r.Iterator;

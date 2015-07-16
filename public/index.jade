@@ -40,6 +40,14 @@ html(ng-app='ffhbApp')
 					|  an bereits über 200 Standorten in Bremen. Das Ziel der Freifunker besteht darin viele WLAN-Router aufzustellen, welche sich untereinander verbinden und so ein lokales Netzwerk mit Internetzugang in Bürgerhand aufbauen. Jeder kann Freifunk nutzen oder rechtssicher selbst anbieten - beispielsweise für Gäste.
 					br
 					| Alle Infos und Fragen bekommt ihr beantwortet beim Freifunk-Stand am Fahnenmast und auf bremen.freifunk.net
+				.box
+					| In diesen Moment benutzen auf der Breminale
+					b  {{statistic.clients}}x
+					|  das
+					b  bremen.freifunk.net
+					|  - Netz
+					br
+					i Dabei gibt es {{statistic.client24}}x 2.4Ghz-Geräte und {{statistic.client50}}x 5.0Ghz-Geräte
 				.box.icon
 					a(href='http://breminale.sternkultur.de')
 						img(src='assets/logo_breminale.png')
@@ -52,6 +60,22 @@ html(ng-app='ffhbApp')
 					| &nbsp;
 					a(href='https://itunes.apple.com/de/app/breminale/id533394658?ls=1&mt=8')
 						img(src='assets/app_iphone.png')
+					| &nbsp;
+				.box.icon
+					h1 Unterstützer
+					div
+						i Während der Breminale
+					a(href='http://www.wfb-bremen.de/')
+						img(src='assets/sponsor_wfb.jpg')
+					| &nbsp;
+					a(href='http://www.bremische-landesmedienanstalt.de/')
+						img(src='assets/sponsor_brema.jpg')
+					| &nbsp;
+					a(href='https://www.lwlcom.com/')
+						img(src='assets/sponsor_lwlcom.png')
+					| &nbsp;
+					a(href='https://openspot.net/')
+						img(src='assets/sponsor_digineo.png')
 					| &nbsp;
 				.box
 					h1.clearfix Breminale Feed

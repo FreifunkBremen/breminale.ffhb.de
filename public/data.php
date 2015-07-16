@@ -30,6 +30,8 @@ if(($CACHE['lastUpdate']+$CACHE_UPDATE_TIME) <= (time()*1000)){
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($curl, CURLOPT_BINARYTRANSFER, true);
 	$request = json_decode(curl_exec($curl),true);
+	curl_setopt($curl,CURLOPT_URL,'http://monitoring.breminale.digineo.de/json/statistic');
+	$statistic = json_decode(curl_exec($curl),true);
 	curl_close($curl);
 	$data = $request['data'];
 	foreach ($data as $item) {
@@ -47,6 +49,7 @@ if(($CACHE['lastUpdate']+$CACHE_UPDATE_TIME) <= (time()*1000)){
 			$CACHE['feed'][]=$item;
 		}
 	}
+	$CACHE['statistic']=$statistic;
 	$CACHE['lastUpdate'] = time()*1000;
 	$CACHE['today'] = mktime(0, 0, 0, date("m")  , date("d"), date("Y"))*1000;
 }
@@ -62,6 +65,7 @@ $OUTPUT['lastUpdate'] = $CACHE['lastUpdate'];
 $OUTPUT['Iterator'] = $CACHE['Iterator'];
 $OUTPUT['today'] = $CACHE['today'];
 $OUTPUT['feed'] = $CACHE['feed'];
+$OUTPUT['statistic'] = $CACHE['statistic'];
 if($DEV){
 	$OUTPUT['feed'][] = array(
 		'id' => 'i348586768525834_959578534093318',
@@ -85,7 +89,7 @@ if($DEV){
 		'id' => 'i348586768525834_959578534093318',
 		'message' => 'Ihr tapferen Leute,
 endlich ist es soweit! Der Deutsche Wetterdienst hebt seine Warnung auf und gönnt uns wieder unseren unbehinderten Spaß!  #Breminale #Wetter',
-		'created_time' => mktime(3, 10, 0, date("m")  , date("d"), date("Y"))*1000,
+		'created_time' => mktime(1, 10, 0, date("m")  , date("d"), date("Y"))*1000,
 		'hashtags' => array(
 			'Breminale',
 			'Wetter'

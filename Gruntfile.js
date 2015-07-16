@@ -5,7 +5,7 @@ module.exports = function(grunt) {
         php: {
             dev: {
                 options: {
-                    hostname: '127.0.0.1',
+                    hostname: '0.0.0.0',
                     port: 9000,
                     base:'./public/',
                     keepalive: true,
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
     					cwd: 'public',
     					dest: 'dist',
     					src: [
-    						'*.{ico,png,txt,php}',
+    						'*.{ico,png,txt,php,jpg}',
     						'.htaccess',
     						//'bower_components/**/*',
     						//'assets/*.png',
