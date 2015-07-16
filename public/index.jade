@@ -3,7 +3,7 @@ html(ng-app='ffhbApp')
 	head
 		meta(charset='utf-8')
 		meta(http-equiv='X-UA-Compatible',content='IE=edge')
-		title Breminale.ffhb.de
+		title Freifunk Bremen auf der Breminale
 		meta(name='description',content='')
 		meta(name='viewport',content='width=device-width, initial-scale=1, user-scalable=no')
 		// Place favicon.ico and apple-touch-icon.png in the root directory
@@ -95,9 +95,9 @@ html(ng-app='ffhbApp')
 									.button(ng-repeat='t in i.hashtags',ng-click='setFilter(t)') \#{{t}}
 				#state
 					p
-						| last refresh: {{state.lastUpdate|date:'dd.MM.yyyy HH:mm:ss'}}
+						| Letzte Aktualisierung: {{state.lastUpdate|date:'dd.MM.yyyy HH:mm:ss'}}
 						br
-						| count of refresh: {{state.Iterator}}
+						| Anzahl der Aktualisierungen: {{state.Iterator}}
 		footer
 		script(src='//localhost:35729/livereload.js')
 		// build:js app.js
