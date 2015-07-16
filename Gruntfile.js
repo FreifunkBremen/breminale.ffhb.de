@@ -57,6 +57,7 @@ module.exports = function(grunt) {
     					dest: 'dist',
     					src: [
                 'assets/*.png',
+                'assets/*.jpg',
     						'!assets/toEdit*.png',
               ]
             }]
