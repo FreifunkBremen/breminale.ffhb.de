@@ -30,7 +30,7 @@ if(($CACHE['lastUpdate']+$CACHE_UPDATE_TIME) <= (time()*1000)){
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($curl, CURLOPT_BINARYTRANSFER, true);
 	$request = json_decode(curl_exec($curl),true);
-	curl_setopt($curl,CURLOPT_URL,'http://monitoring.breminale.digineo.de/json/statistic');
+	curl_setopt($curl,CURLOPT_URL,'http://monitoring2.breminale.ffhb.de/json/statistic');
 	$statistic = json_decode(curl_exec($curl),true);
 	curl_close($curl);
 	$data = $request['data'];
