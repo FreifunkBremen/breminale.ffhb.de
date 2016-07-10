@@ -237,5 +237,5 @@ module.exports = function(grunt) {
         'clean:tmp'
       ]);
 
-    grunt.registerTask('default', ['build']);
+    grunt.registerTask('default', ['serve']);
 };
