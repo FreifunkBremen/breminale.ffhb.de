@@ -8,8 +8,15 @@ http://[2001:bf7:540::5b]/ - IPv6
 
 ## Installation
 
-### Build
+### Preparation
+```
+ npm install
+ npm install grunt-cli
+```
 
+### Build and Upload
+
+Warning: this will automatically publish your local version to breminale.ffhb.de!
 ```
  grunt build
 ```
@@ -33,4 +40,4 @@ git clone/pull the gh-pages branch
 ```
  grunt
 ```
-and open Browser http://localhost:5000/
+and open Browser http://localhost:9000/
