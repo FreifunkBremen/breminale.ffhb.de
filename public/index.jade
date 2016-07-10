@@ -33,17 +33,19 @@ html(ng-app='ffhbApp')
 					br
 					| Realisiert wird dies von
 					b  Bürgern
-					|  an bereits über 200 Standorten in Bremen. Das Ziel der Freifunker besteht darin viele WLAN-Router aufzustellen, welche sich untereinander verbinden und so ein lokales Netzwerk mit Internetzugang in Bürgerhand aufbauen. Jeder kann Freifunk nutzen oder rechtssicher selbst anbieten - beispielsweise für Gäste.
+					|  an bereits über 500 Standorten in Bremen. Das Ziel der Freifunker besteht darin, viele WLAN-Router aufzustellen, welche sich untereinander verbinden und so ein lokales Netzwerk mit Internetzugang in Bürgerhand aufbauen. Jeder kann Freifunk nutzen oder rechtssicher selbst anbieten - beispielsweise für Gäste.
 					br
-					| Alle Infos und Fragen bekommt ihr beim Freifunk-Stand und auf bremen.freifunk.net beantwortet.
-				.box
-					| In diesen Moment benutzen
-					b  {{statistic.clients}}
-					|  Geräte das
-					b  bremen.freifunk.net
-					|  - WLAN
 					br
-					i Davon nutzen {{statistic.client24}} Geräte das 2.4 Ghz- und {{statistic.client50}} das 5 Ghz-Band
+					| Alle Infos und Fragen bekommt ihr beim Freifunk-Wagen und auf 
+					a(href='http://bremen.freifunk.net')
+						| bremen.freifunk.net
+					|  beantwortet.
+					br
+					br
+					| Es gibt auch eine 
+					a(href='http://meshviewer.breminale.ffhb.de')
+						| Karte der WLAN-Hotspots auf der Breminale
+					| .
 				.box.icon
 					a(href='http://breminale.sternkultur.de')
 						img(src='assets/logo_breminale.png')
@@ -51,22 +53,16 @@ html(ng-app='ffhbApp')
 					a(href='http://bremen.freifunk.net')
 						img(src='assets/logo_ffhb_skyline.png')
 					| &nbsp;
-					a(href='https://play.google.com/store/apps/details?id=de.ahlfeld.breminale')
+					a(href='https://play.google.com/store/apps/details?id=de.ahlfeld.breminale.app')
 						img(src='assets/app_android.png')
 					| &nbsp;
-					a(href='https://itunes.apple.com/de/app/breminale/id533394658?ls=1&mt=8')
+					a(href='https://itunes.apple.com/de/app/breminale/id533394658?l=en&mt=8')
 						img(src='assets/app_iphone.png')
 					| &nbsp;
 				.box.icon
 					h1 Unterstützer
 					div
 						i Während der Breminale
-					a(href='http://www.wfb-bremen.de/')
-						img(src='assets/sponsor_wfb.jpg')
-					| &nbsp;
-					a(href='http://www.bremische-landesmedienanstalt.de/')
-						img(src='assets/sponsor_brema.jpg')
-					| &nbsp;
 					a(href='https://www.lwlcom.com/')
 						img(src='assets/sponsor_lwlcom.png')
 					| &nbsp;
