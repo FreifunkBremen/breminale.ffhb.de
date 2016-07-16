@@ -30,6 +30,7 @@ git clone/pull the gh-pages branch
 ## Development
 
 ### Download dependencies
+Install PHP5 and PHP Curl module (under Ubuntu: sudo apt-get install php5 php5-curl)
 
 ``
  npm install

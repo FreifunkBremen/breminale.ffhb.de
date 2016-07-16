@@ -10,9 +10,9 @@ $FB_PAGE='Breminale';
 $FB_URL = 'graph.facebook.com/v2.3/'.$FB_PAGE.'/posts';
 $FB_APP_ID = '378325892362983';
 $FB_APP_Secret = '00e8ad973e1599c013e7728ed749bbe2';
-$FB_Token = '?fields=message'.
-	'&limit=250'.
-	'&since=1415704271'.
+$FB_Token = '?fields=message,created_time'.
+	'&limit=100'.
+	'&since=1452988800'.
 	'&access_token='.$FB_APP_ID.'|'.$FB_APP_Secret;
 /**
  * DECLARE CACHE
