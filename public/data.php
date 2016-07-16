@@ -8,8 +8,8 @@ $CACHE_PATH = '/tmp/breminale_ffhb_de.cache';
 $FB_PAGE='Breminale';
 
 $FB_URL = 'graph.facebook.com/v2.3/'.$FB_PAGE.'/posts';
-$FB_APP_ID = '378325892362983';
-$FB_APP_Secret = '00e8ad973e1599c013e7728ed749bbe2';
+$FB_APP_ID = '532326813640267';
+$FB_APP_Secret = 'db9133b2ba195e035b68ff2b4d90f915';
 $FB_Token = '?fields=message,created_time'.
 	'&limit=100'.
 	'&since=1452988800'.
